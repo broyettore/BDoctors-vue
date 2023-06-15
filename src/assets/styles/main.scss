@@ -1,8 +1,9 @@
 @use './_partials/reset.scss';
 @use './_partials/variables.scss' as *;
+@use './_partials/hover.scss';
 @import "../../../node_modules/bootstrap/scss/bootstrap.scss";
 
-body {
+/*body {
     background-color: black;
     color: white;
-}
+}*/

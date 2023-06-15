@@ -7,18 +7,17 @@ export default {
     components: {
         AppFooter,
         AppHeader,
-        AppMain
+        AppMain,
     }
 }
 </script>
 
 <template>
-<AppHeader />
-<AppMain />
-<AppFooter />
+    <AppHeader />
+    <AppMain />
+    <AppFooter />
 </template>
 
 <style lang="scss" scoped>
 @use "./assets/styles/_partials/variables.scss" as *;
-
 </style>
