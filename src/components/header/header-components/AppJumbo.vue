@@ -10,6 +10,10 @@ export default {
             <h1>NON è MAI STATO COSì SEMPLICE CHIAMARE UN DOTTORE</h1>
         </div>
 
+        <div class="container-button d-flex align-items-center justify-content-center ">
+            <button class="button-type-1 m-3">ACCEDI COME PAZIENTE</button>
+            <button class="button-type-2">ACCEDI COME DOTTORE</button>
+        </div>
     </section>
 </template>
 
@@ -23,4 +27,27 @@ export default {
         }
     }
 }
-</style>
+
+@media (max-width: 480px) {
+
+    /* Stili per dispositivi mobili */
+    #jumbo {
+        div {
+            h1 {
+                font-size: 24px;
+            }
+        }
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+
+    /* Stili per iPad e tablet */
+    #jumbo {
+        div {
+            h1 {
+                font-size: 28px;
+            }
+        }
+    }
+}</style>

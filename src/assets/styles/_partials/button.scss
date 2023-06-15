@@ -1,0 +1,16 @@
+.button-type-1 {
+    @extend .btn !optional;
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+}
+
+.button-type-2 {
+    @extend .btn !optional;
+    background-color: #28a745;
+    color: white;
+    border-color: #28a745;
+    padding: 15px;
+    border-radius: 50%;
+}
