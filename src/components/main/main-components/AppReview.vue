@@ -1,28 +1,38 @@
 <script >
 export default {
-    name: "AppCall"
+    name: "AppReview"
 }
 </script>
 
 <template>
-    <section id="call" class="container d-flex">
-        <div class="container-img ">
-            <img src="../../../../public/doctor-white-background.png" alt="">
+    <section id="review">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <img src="../../../../public/5-Star-Rating-Vector-Transparent-PNG.png" alt="" class="img-fluid">
+                </div>
+                <div class="col-md-12 text-center">
+                    <h2>Sentiti libero di condividerci la tua esperienza</h2>
+                    <p class="mt-4 h5">
+                        Avrai a disposizione la possibilità di inserire la tua recensione e di poter leggere quelle altrui.
+                        Questo ti aiuterà nella scelta del professionista che più si addice alle tue esigenze.
+                    </p>
+                </div>
+            </div>
         </div>
 
-        <div class="text-center pt-4">
-            <h2>Scegli il professionista più adatto alle tue esigenze</h2>
-            <p class="mt-4 h5">
-                Le nostre chat sono organizzate in canali tematici in cui puoi scegliere il dottore che preferisci. Puoi
-                parlare
-                del tuo problema col professionista che reputi più adatto alla tua casistica.
-            </p>
-        </div>
+
     </section>
 </template>
 
 <style lang="scss" scoped>
 @use "../../../assets/styles/_partials/variables.scss" as *;
+
+#review {
+    background-color: $main-background;
+    color: $main-text;
+}
 
 // Media query per dispositivi mobili
 @media (max-width: 480px) {
@@ -48,7 +58,7 @@ export default {
 // Media query per iPad e tablet
 @media (min-width: 481px) and (max-width: 768px) {
 
-    #call {
+    #review {
         display: flex;
         flex-direction: column;
 
@@ -66,7 +76,7 @@ export default {
 
 @media (min-width: 768px) and (max-width: 1000px) {
 
-    #call {
+    #review {
         div {
             h2 {
                 margin: 0px;
