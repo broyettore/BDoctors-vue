@@ -1,12 +1,15 @@
 <script >
 import AppCall from './main-components/AppCall.vue';
 import AppReview from './main-components/AppReview.vue';
+import AppWorkWithUs from './main-components/AppWorkWithUs.vue';
+
 
 export default {
     name: "AppMain",
     components: {
         AppCall,
-        AppReview
+        AppReview,
+        AppWorkWithUs
     }
 }
 </script>
@@ -15,6 +18,7 @@ export default {
     <main>
         <AppCall />
         <AppReview />
+        <AppWorkWithUs />
     </main>
 </template>
 
