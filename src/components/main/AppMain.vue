@@ -1,14 +1,20 @@
 <script >
+import AppCall from './main-components/AppCall.vue';
+
 export default {
-    name: "AppMain"
+    name: "AppMain",
+    components: {
+        AppCall,
+    }
 }
 </script>
 
 <template>
-<main><h2>Main</h2></main>
+    <main>
+        <AppCall />
+    </main>
 </template>
 
 <style lang="scss" scoped>
 @use "../../assets/styles/_partials/variables.scss" as *;
-
 </style>
