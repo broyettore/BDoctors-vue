@@ -7,12 +7,12 @@ export default {
 <template>
     <section id="jumbo" class="container">
         <div class="d-flex justify-content-center text-center">
-            <h1>NON è MAI STATO COSì SEMPLICE CHIAMARE UN DOTTORE</h1>
+            <h1>NON È MAI STATO COSÌ SEMPLICE CHIAMARE UN DOTTORE</h1>
         </div>
 
         <div class="container-button d-flex align-items-center justify-content-center ">
-            <button class="button-type-1 m-3">ACCEDI COME PAZIENTE</button>
-            <button class="button-type-2">ACCEDI COME DOTTORE</button>
+            <button class="button-type-1 m-3 hover-red">ACCEDI COME PAZIENTE</button>
+            <button class="button-type-2 hover-red">ACCEDI COME DOTTORE</button>
         </div>
     </section>
 </template>
@@ -25,6 +25,11 @@ export default {
         h1 {
             width: 700px;
         }
+    }
+
+    .container-button {
+        margin: 100px;
+        padding-bottom: 100px;
     }
 }
 
@@ -50,4 +55,5 @@ export default {
             }
         }
     }
-}</style>
+}
+</style>

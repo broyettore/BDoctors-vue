@@ -1,6 +1,13 @@
 @import './variables';
 
 .hover:hover {
-    color: $hover;
     font-weight: bold;
+}
+
+.hover-red:hover {
+    color: $hover-red;
+}
+
+.hover-black:hover {
+    color: $hover-black;
 }

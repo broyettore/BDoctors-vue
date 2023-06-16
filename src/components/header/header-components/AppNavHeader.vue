@@ -6,14 +6,6 @@ export default {
 </script>
 
 <template>
-    <!--<nav>
-        <ul class="d-flex">
-            <li class="p-2"><a class="hover" href="#"> prova</a></li>
-            <li class="p-2"><a class="hover" href="#"> prova</a></li>
-            <li class="p-2"><a class="hover" href="#"> prova</a></li>
-        </ul>
-    </nav>-->
-
     <nav class="navbar navbar-expand-lg navbar-light">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
             aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
