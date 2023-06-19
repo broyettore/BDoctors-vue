@@ -15,10 +15,10 @@ export default {
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav">
                 <li class="nav-item m-2 p-2">
-                    <a class="hover " href="#">Prova</a>
+                    <a class="hover" href="#">Prova</a>
                 </li>
                 <li class="nav-item m-2 p-2">
-                    <a class="hover " href="#">Prova</a>
+                    <a class="hover" href="#">Prova</a>
                 </li>
                 <li class="nav-item m-2 p-2 p-0 m-0">
                     <a class="hover" href="#">Prova</a>
