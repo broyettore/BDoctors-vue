@@ -5,15 +5,18 @@ export default {
 </script>
 
 <template>
-    <section id="jumbo" class="container">
-        <div class="d-flex justify-content-center text-center">
-            <h1>NON È MAI STATO COSÌ SEMPLICE CHIAMARE UN DOTTORE</h1>
+    <section id="jumbo">
+        <div class="container">
+            <div class="d-flex justify-content-center text-center">
+                <h1>NON È MAI STATO COSÌ SEMPLICE CHIAMARE UN DOTTORE</h1>
+            </div>
+
+            <div class="container-button d-flex align-items-center justify-content-center ">
+                <button class="button-type-1 m-3 hover-red">ACCEDI COME PAZIENTE</button>
+                <button class="button-type-2 hover-red">ACCEDI COME DOTTORE</button>
+            </div>
         </div>
 
-        <div class="container-button d-flex align-items-center justify-content-center ">
-            <button class="button-type-1 m-3 hover-red">ACCEDI COME PAZIENTE</button>
-            <button class="button-type-2 hover-red">ACCEDI COME DOTTORE</button>
-        </div>
     </section>
 </template>
 
@@ -21,6 +24,9 @@ export default {
 @use "../../../assets/styles/_partials/variables.scss" as *;
 
 #jumbo {
+    background-color: $header-background;
+    color: $header-text ;
+
     div {
         h1 {
             width: 700px;
