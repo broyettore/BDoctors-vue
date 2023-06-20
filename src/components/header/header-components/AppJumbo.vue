@@ -6,14 +6,21 @@ export default {
 
 <template>
     <section id="jumbo" class="container">
+
         <div class="d-flex justify-content-center text-center">
             <h1>NON È MAI STATO COSÌ SEMPLICE CHIAMARE UN DOTTORE</h1>
         </div>
 
-        <div class="container-button d-flex align-items-center justify-content-center ">
-            <button class="button-type-1 m-3 hover-red">ACCEDI COME PAZIENTE</button>
-            <button class="button-type-2 hover-red">ACCEDI COME DOTTORE</button>
+        <div class="container-s-bar d-flex align-items-center justify-content-center ">
+            <div class="container">
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Cerca lo specialista di cui hai bisogno"
+                        aria-label="Search">
+                    <button class=" btn btn-primary" type="submit">Cerca</button>
+                </form>
+            </div>
         </div>
+
     </section>
 </template>
 
@@ -27,7 +34,7 @@ export default {
         }
     }
 
-    .container-button {
+    .container-s-bar {
         margin: 100px;
         padding-bottom: 100px;
     }
