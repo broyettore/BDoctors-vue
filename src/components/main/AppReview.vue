@@ -27,7 +27,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@use "../../../assets/styles/_partials/variables.scss" as *;
+@use "../../assets/styles/_partials/variables.scss" as *;
 
 #review {
     background-color: $main-background;
