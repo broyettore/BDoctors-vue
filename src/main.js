@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { router } from './router'
 import "./assets/styles/main.scss"
 import '@fortawesome/fontawesome-free/css/all.css';
 import App from './App.vue'
@@ -16,4 +17,4 @@ import { faNotesMedical } from '@fortawesome/free-solid-svg-icons';
 library.add(House, faFacebook, faTwitter, faInstagram, faLinkedinIn, faNotesMedical)
 
 
-createApp(App).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
+createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(router).mount('#app')

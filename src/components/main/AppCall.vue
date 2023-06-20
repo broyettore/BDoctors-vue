@@ -1,33 +1,33 @@
 <script >
 export default {
-    name: "AppWorkWithUs"
+    name: "AppCall"
 }
 </script>
 
 <template>
-    <section id="work" class="container d-flex justify-content-center ">
+    <section id="call" class="container d-flex">
         <div class="container-img ">
-            <img src="../../../../public/stretta-mano.png" alt="">
+            <img src="../../../../public/doctor-white-background.png" alt="">
         </div>
 
         <div class="text-center pt-4">
-            <h2>Sei un dottore? Lavora con noi!</h2>
+            <h2>Scegli il professionista più adatto alle tue esigenze</h2>
             <p class="mt-4 h5">
-                Contattaci e inviaci la tua esperienza!
-            <div><button class="button-type-2 hover-black">Contattaci</button></div>
+                Le nostre chat sono organizzate in canali tematici in cui puoi scegliere il dottore che preferisci. Puoi
+                parlare
+                del tuo problema col professionista che reputi più adatto alla tua casistica.
             </p>
-
         </div>
     </section>
 </template>
 
 <style lang="scss" scoped>
-@use "../../../assets/styles/_partials/variables.scss" as *;
+@use "../../assets/styles/_partials/variables.scss" as *;
 
 // Media query per dispositivi mobili
 @media (max-width: 480px) {
 
-    #work {
+    #call {
         display: flex;
         flex-direction: column;
 
@@ -46,9 +46,9 @@ export default {
 }
 
 // Media query per iPad e tablet
-@media (min-width: 481px) and (max-width: 800px) {
+@media (min-width: 481px) and (max-width: 768px) {
 
-    #work {
+    #call {
         display: flex;
         flex-direction: column;
 
@@ -64,9 +64,9 @@ export default {
     }
 }
 
-@media (min-width: 800px) and (max-width: 1000px) {
+@media (min-width: 768px) and (max-width: 1000px) {
 
-    #work {
+    #call {
         div {
             h2 {
                 margin: 0px;
