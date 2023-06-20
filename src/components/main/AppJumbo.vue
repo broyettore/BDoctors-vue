@@ -1,6 +1,13 @@
 <script>
+import store from '../../store';
 export default {
-    name: "AppJumbo"
+    name: "AppJumbo",
+    data() {
+        return {
+            store,
+            query: "",
+        }
+    },
 }
 </script>
 
@@ -15,8 +22,11 @@ export default {
                 <div class="container">
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Cerca lo specialista di cui hai bisogno"
-                            aria-label="Search">
-                        <button class=" btn btn-primary" type="submit">Cerca</button>
+                            aria-label="Search" v-model="query" >
+                            <router-link :to="{ name: 'list', params: { search: query } }" class="btn btn-primary"
+                            v-if="query.length > 0">
+                                Cerca
+                            </router-link>
                     </form>
                 </div>
             </div>

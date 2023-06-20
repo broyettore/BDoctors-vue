@@ -15,7 +15,7 @@ const router = createRouter({
             component: AppHome
         },
         {
-            path: '/list',
+            path: '/list/:search',
             name: 'list',
             component: AppList
         }
