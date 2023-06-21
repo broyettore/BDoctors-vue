@@ -63,7 +63,7 @@ export default {
         >{{ doctor.services }}
       </p>
       <p><strong class="p-2">Valutazione:</strong>
-        <font-awesome-icon v-for="n in votesAverage" icon="fa-solid fa-star" />
+        <font-awesome-icon v-for="n in votesAverage" icon="fa-solid fa-star" /> ({{doctor.votes.length}})
     </p>
     </div>
 
