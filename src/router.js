@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 
 // IMPORTO I COMPONENTI
 import AppHome from './pages/AppHome.vue';
-import AppList from './pages/AppList.vue'
+import AppList from './pages/AppList.vue';
+import AppCard from './pages/AppCard.vue';
 
 
 const router = createRouter({
