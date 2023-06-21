@@ -54,8 +54,8 @@ export default {
                     </ul>
                 </div>
             </div>
+            <p class="p-5">&copy;<small>La parola Terracotta è bella.2023.Tutti i diritti riservati.</small> </p>
         </div>
-        <p class="p-5">&copy;<small>La parola Terracotta è bella.2023.Tutti i diritti riservati.</small> </p>
     </footer>
 </template>
 

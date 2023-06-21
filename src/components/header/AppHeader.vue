@@ -12,7 +12,7 @@ export default {
 
 <template>
     <header>
-        <div class="container-header container d-flex justify-content-between p-2 pt-4">
+        <div class="container-header container d-flex justify-content-between align-items-center py-3">
             <h1><font-awesome-icon icon="fa-solid fa-notes-medical" class="px-3" />BDoctors </h1>
             <div>
                 <AppNavHeader />

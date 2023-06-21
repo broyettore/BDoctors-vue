@@ -56,6 +56,7 @@ export default {
                         <font-awesome-icon v-for="n in n" icon="fa-solid fa-star" />
                     </label>
                 </div>
+                <button class="btn btn-secondary" @click="ratingValue = null">Rese</button>
             </div>
             <!--<AppCard />-->
 
