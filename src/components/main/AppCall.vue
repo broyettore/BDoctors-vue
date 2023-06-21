@@ -5,7 +5,7 @@ export default {
 </script>
 
 <template>
-    <section id="call" class="container d-flex">
+    <section id="call" class="container d-flex align-items-center">
         <div class="container-img ">
             <img src="../../../../public/doctor-white-background.png" alt="">
         </div>
@@ -23,6 +23,18 @@ export default {
 
 <style lang="scss" scoped>
 @use "../../assets/styles/_partials/variables.scss" as *;
+
+#call {
+    padding: 80px 0;
+    
+    h2 {
+        font-weight: bold;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+}
 
 // Media query per dispositivi mobili
 @media (max-width: 480px) {

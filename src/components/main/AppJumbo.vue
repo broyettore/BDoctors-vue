@@ -19,9 +19,9 @@ export default {
             </div>
 
             <div class="container-s-bar d-flex align-items-center justify-content-center ">
-                <div class="container">
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Cerca lo specialista di cui hai bisogno"
+                <div class="container py-5">
+                    <form class="d-flex justify-content-center">
+                        <input class="form-control me-2 ms-search" type="search" placeholder="Cerca lo specialista di cui hai bisogno"
                             aria-label="Search" v-model="query" >
                             <router-link :to="{ name: 'list', params: { search: query } }" class="btn btn-primary"
                             v-if="query.length > 0">
@@ -42,16 +42,17 @@ export default {
 #jumbo {
     background-color: $header-background;
     color: $header-text ;
+    padding: 100px 0;
+
     div {
         h1 {
             width: 700px;
         }
     }
+}
 
-    .container-s-bar {
-        margin: 100px;
-        padding-bottom: 100px;
-    }
+.ms-search {
+    max-width: 600px;
 }
 
 @media (max-width: 480px) {

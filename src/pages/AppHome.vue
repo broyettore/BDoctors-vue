@@ -25,7 +25,4 @@ export default {
 
 <style lang="scss" scoped>
 @use "../assets/styles/_partials/variables.scss" as *;
-section {
-    padding: 100px;
-}
 </style>
