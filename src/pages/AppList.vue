@@ -13,7 +13,8 @@ export default {
         return {
             store,
             doctorsList: [],
-            ratingValue: null
+            ratingValue: null,
+            reviewOrder: null,
         }
     },
 
@@ -38,10 +39,26 @@ export default {
             const avg = sum / votes.length
 
             return Math.floor(avg)
+        },
+        resetDatas() {
+            this.ratingValue = null;
+            this.reviewOrder = null;
         }
     },
     created() {
         this.getDoctors();
+    },
+    computed: {
+        orderDoctorList() {
+
+            if(this.reviewOrder === "desc") {
+                return  this.doctorsList.sort((a, b) => a.reviews.length - b.reviews.length);
+            } else if (this.reviewOrder === "asc") {
+                return  this.doctorsList.sort((a, b) => b.reviews.length - a.reviews.length);
+            } else {
+                return  this.doctorsList.sort((a, b) => b.id - a.id);
+            }
+     }
     }
 }
 </script>
@@ -56,12 +73,23 @@ export default {
                         <font-awesome-icon v-for="n in n" icon="fa-solid fa-star" />
                     </label>
                 </div>
-                <button class="btn btn-secondary" @click="ratingValue = null">Rese</button>
+                <div class="reviews">
+                    <div>
+                        <input type="radio" name="review-checkboxes" value="asc" class="ms-2 rating-checkboxes" v-model="reviewOrder" @click="reviewOrder = 'asc'">
+                        <label for="rating-checkboxes">+ reviews</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="review-checkboxes" value="desc" class="ms-2 rating-checkboxes" v-model="reviewOrder">
+                        <label for="rating-checkboxes" @click="reviewOrder = 'desc'">- reviews</label>
+                    </div>
+                </div>
+                <button class="btn btn-secondary mb-3" @click="resetDatas">Reset</button>
             </div>
             <!--<AppCard />-->
 
             <div class="main-content">
-                <div v-for="doctor in doctorsList">
+                <div v-for="doctor in orderDoctorList">
                     <AppCard :doctor="doctor" v-if="votesAverage(doctor.votes) == ratingValue || ratingValue == null"/>
                 </div>
             </div>
