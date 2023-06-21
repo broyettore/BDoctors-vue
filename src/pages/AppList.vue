@@ -13,6 +13,7 @@ export default {
         return {
             store,
             doctorsList: [],
+            ratingValue: null
         }
     },
 
@@ -26,9 +27,19 @@ export default {
                 .catch((error) => {
                     console.log(error);
                 })
+        },
+        votesAverage(votes) {
+
+            let sum = 0;
+
+            for (let i = 0; i < votes.length; i++) {
+                sum += votes[i].value;
+            }
+            const avg = sum / votes.length
+
+            return Math.floor(avg)
         }
     },
-
     created() {
         this.getDoctors();
     }
@@ -37,13 +48,22 @@ export default {
 
 <template>
     <main>
-        <div class="container">
-
+        <div class="container-fluid justify-content-center d-flex content">
+            <div class="side-bar me-auto">
+                <div class="d-flex justify-content-start flex-row-reverse" v-for="n in 5">
+                    <input type="radio" name="rating-checkboxes" class="ms-2 rating-checkboxes" :value="n" v-model="ratingValue" @click="ratingValue = n">
+                    <label for="rating-checkboxes">
+                        <font-awesome-icon v-for="n in n" icon="fa-solid fa-star" />
+                    </label>
+                </div>
+            </div>
             <!--<AppCard />-->
 
-            <AppCard v-for="doctor in doctorsList" :key="doctor.id" :doctor="doctor" :address="doctor.address"
-                :phone_number="doctor.phone_number" :services="doctor.services" :user_id="doctor.user_id"
-                :created_at="doctor.created_at" :updated_at="doctor.updated_at" :photo="doctor.photo" />
+            <div class="main-content">
+                <div v-for="doctor in doctorsList">
+                    <AppCard :doctor="doctor" v-if="votesAverage(doctor.votes) == ratingValue || ratingValue == null"/>
+                </div>
+            </div>
 
             <!--<ul>
                 <li v-for="doctor in doctorsList">{{ doctor.user.first_name }}</li>
@@ -54,4 +74,16 @@ export default {
 
 <style lang="scss" scoped>
 @use "../assets/styles/_partials/variables.scss" as *;
+
+.content {
+    max-width: 81.25rem;
+
+    .side-bar {
+        width: 30%;
+    }
+
+    .main-content {
+        width: 70%;
+    }
+}
 </style>

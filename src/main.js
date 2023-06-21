@@ -9,12 +9,14 @@ import * as bootstrap from 'bootstrap'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faHouse as House } from '@fortawesome/free-solid-svg-icons'
+import { faStar as Star } from '@fortawesome/free-solid-svg-icons'
+
 /* import specific icons  */
 import { faFacebook, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { faNotesMedical } from '@fortawesome/free-solid-svg-icons';
 
 /* add icons */
-library.add(House, faFacebook, faTwitter, faInstagram, faLinkedinIn, faNotesMedical)
+library.add(House, faFacebook, faTwitter, faInstagram, faLinkedinIn, faNotesMedical, Star)
 
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(router).mount('#app')
