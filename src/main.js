@@ -14,9 +14,12 @@ import { faStar as Star } from '@fortawesome/free-solid-svg-icons'
 /* import specific icons  */
 import { faFacebook, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { faNotesMedical } from '@fortawesome/free-solid-svg-icons';
+import { faFilter as filter } from '@fortawesome/free-solid-svg-icons';
+import { faPlus as plus } from '@fortawesome/free-solid-svg-icons';
+import { faMinus as minus} from '@fortawesome/free-solid-svg-icons';
 
 /* add icons */
-library.add(House, faFacebook, faTwitter, faInstagram, faLinkedinIn, faNotesMedical, Star)
+library.add(House, faFacebook, faTwitter, faInstagram, faLinkedinIn, faNotesMedical, Star, filter, plus, minus)
 
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(router).mount('#app')
