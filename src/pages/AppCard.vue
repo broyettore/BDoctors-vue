@@ -21,7 +21,8 @@ export default {
         <div class="card-doctor p-4 m-4 d-flex justify-content-between align-items-center">
 
             <div class="container-img-name d-flex">
-                <img :src="this.store.testApi + doctor.photo" :alt="doctor.photo" class="rounded-circle" />
+                <img v-if="doctor.photo != ''" :src="this.store.testApi + doctor.photo" :alt="doctor.photo" class="rounded-circle" />
+                <img v-else src="/avatar-medico-edited.jpg" :alt="doctor.last_name + 'photo'">
                 <div class="name-and-star">
                     <h3 class="p-2">{{ doctor.user.first_name }} {{ doctor.user.last_name }}</h3>
                     <!--inserire le stelline delle recensioni qui-->
