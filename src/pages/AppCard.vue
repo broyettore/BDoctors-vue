@@ -42,9 +42,12 @@ export default {
       <div class="vote_review">
         <h6></h6>
         <ul>
-          <li class="text-center" v-if="doctor.votes.length">
+          <li class="text-center" v-if="doctor.votes.length > 0">
             Valutazione: <font-awesome-icon v-for="n in votesAverage" icon="fa-solid fa-star" /> ({{ doctor.votes.length
             }})
+          </li>
+          <li class="text-center" v-else="doctor.votes.length === 0">
+            Nessuna valutazione.
           </li>
           <li class="text-center">
             Recensioni: {{ doctor.reviews.length }}
