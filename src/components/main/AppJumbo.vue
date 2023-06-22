@@ -8,6 +8,13 @@ export default {
             query: "",
         }
     },
+    methods: {
+ 
+        goToDoctorsList() {
+            console.log("eseguita")
+            this.$router.push({ name: 'list', params: { search: this.query } })
+        }
+    }
 }
 </script>
 
@@ -20,9 +27,9 @@ export default {
 
             <div class="container-s-bar d-flex align-items-center justify-content-center ">
                 <div class="container py-5">
-                    <form class="d-flex justify-content-center">
-                        <input class="form-control me-2 ms-search" type="search" placeholder="Cerca lo specialista di cui hai bisogno"
-                        aria-label="Search" v-model="query" >
+                    <form class="d-flex justify-content-center" @submit.prevent="goToDoctorsList">
+                        <input class="form-control me-2 ms-search" type="text" placeholder="Cerca lo specialista di cui hai bisogno"
+                        aria-label="Search" v-model="query" @submit.prevent="goToDoctorsList">
                         <router-link :to="{ name: 'list', params: { search: query } }" class="btn btn-primary"
                         v-if="query.length > 0">
                             Cerca
