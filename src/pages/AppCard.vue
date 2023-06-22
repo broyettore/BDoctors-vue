@@ -29,7 +29,7 @@ export default {
   <div class="p-2">
     <div class="card-container">
       <span class="pro">SPONSOR</span>
-      <img v-if="doctor.photo != ''" :src="this.store.testApi + doctor.photo" :alt="doctor.photo"
+      <img v-if="doctor.photo != '' && doctor.photo != null" :src="this.store.testApi + doctor.photo" :alt="doctor.photo"
         class="round ms-profile" />
       <img v-else src="/avatar-medico-edited.jpg" class="round ms-profile" :alt="doctor.last_name + 'photo'" />
       <h3>{{ doctor.user.first_name }} {{ doctor.user.last_name }}</h3>
