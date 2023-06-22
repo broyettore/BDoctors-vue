@@ -7,7 +7,7 @@ export default {
 <template>
     <section id="call" class="container d-flex align-items-center">
         <div class="container-img ">
-            <img src="../../../../public/doctor-white-background.png" alt="">
+            <img src="/doctor-white-background.png" alt="">
         </div>
 
         <div class="text-center pt-4">
@@ -26,7 +26,7 @@ export default {
 
 #call {
     padding: 80px 0;
-    
+
     h2 {
         font-weight: bold;
     }

@@ -10,7 +10,7 @@ export default {
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <img src="../../../../public/5-Star-Rating-Vector-Transparent-PNG.png" alt="" class="img-fluid stars">
+                    <img src="/5-Star-Rating-Vector-Transparent-PNG.png" alt="" class="img-fluid stars">
                 </div>
                 <div class="col-md-12 text-center">
                     <h2>Sentiti libero di condividerci la tua esperienza</h2>

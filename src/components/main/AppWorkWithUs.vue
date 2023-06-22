@@ -8,9 +8,9 @@ export default {
     <section id="work" class="container d-flex justify-content-center">
         <div class="custom-ctn d-flex justify-content-between align-items-center">
             <div class="container-img left">
-                <img src="../../../../public/stretta-mano.png" class="img-fluid" alt="">
+                <img src="/stretta-mano.png" class="img-fluid" alt="">
             </div>
-    
+
             <div class="text-center pt-4 right">
                 <h2>Sei un dottore? Lavora con noi!</h2>
                 <p class="my-3 fs-5">
@@ -35,7 +35,7 @@ export default {
     h2 {
         font-weight: bold;
     }
-    
+
     .ms-btn-cta {
         background-color: $main-background;
         color: #fff;
@@ -43,7 +43,7 @@ export default {
         border: 2px solid $main-background;
         border-radius: 10px;
         max-width: 150px;
-    
+
         &:hover {
             background-color: transparent;
             font-weight: bold;
@@ -53,10 +53,11 @@ export default {
             transition: ease-in-out .30s;
         }
     }
-    
+
     .left {
         width: 40%;
     }
+
     .right {
         width: 55%;
     }
@@ -67,9 +68,9 @@ export default {
         max-width: 60%;
     }
 
-    .left, .right {
+    .left,
+    .right {
         width: 48%;
     }
 }
-
 </style>
