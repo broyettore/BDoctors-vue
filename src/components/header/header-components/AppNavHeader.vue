@@ -7,18 +7,11 @@ export default {
 
 <template>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <button class="navbar-toggler ms-burger-btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarContent">
-            <ul class="navbar-nav ms-drop">
-                <li class="nav-item ms-item p-1 m-2">
+            <ul>
+                <li class="p-1 m-2">
                     <a href="http://127.0.0.1:8000">SEI DOTTORE ? ACCEDI</a>
                 </li>
             </ul>
-        </div>
     </nav>
 </template>
 

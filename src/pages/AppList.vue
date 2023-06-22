@@ -162,6 +162,11 @@ export default {
                                             @click="reviewOrder = 'asc'" />
                                         <span><font-awesome-icon icon="fa-solid fa-minus" /> Reviews</span>
                                     </label>
+                                    <label>
+                                        <input type="checkbox" name="no-review" value="no-review" v-model="hideNoReview"
+                                            @click="hideNoReview = !hideNoReview">
+                                        <span>Nascondi senza review</span>
+                                    </label>
                                 </form>
                             </div>
                             <button class="btn ms-btn-primary mb-3" @click="resetDatas">
@@ -282,4 +287,5 @@ export default {
         border-left: 1px solid $main-background;
         padding-left: 20px;
     }
-}</style>
+}
+</style>
