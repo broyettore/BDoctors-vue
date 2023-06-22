@@ -15,6 +15,7 @@ export default {
             doctorsList: [],
             ratingValue: null,
             reviewOrder: null,
+            hideNoReview: false
         };
     },
 
@@ -43,25 +44,37 @@ export default {
         resetDatas() {
             this.ratingValue = null;
             this.reviewOrder = null;
+            this.hideNoReview = false;
         },
+        checkDoctorReviews(reviews) {
+            if (this.hideNoReview) {
+                if (reviews[0]) {
+                    return true
+                }
+
+                return false
+            }
+
+            return true
+        }
     },
     created() {
         this.getDoctors();
     },
     computed: {
         orderDoctorList() {
-            if (this.reviewOrder === "desc") {
+            if (this.reviewOrder === "asc") {
                 return this.doctorsList.sort(
                     (a, b) => a.reviews.length - b.reviews.length
                 );
-            } else if (this.reviewOrder === "asc") {
+            } else if (this.reviewOrder === "desc") {
                 return this.doctorsList.sort(
                     (a, b) => b.reviews.length - a.reviews.length
                 );
             } else {
                 return this.doctorsList.sort((a, b) => b.id - a.id);
             }
-        },
+        }
     },
 };
 </script>
@@ -71,92 +84,101 @@ export default {
         <div class="container ms-ctn d-flex flex-column flex-md-row py-5">
             <!-- side bar  -->
             <div class="side-bar p-2 mb-2">
-                 <!-- versione tablet +  -->
+                <!-- versione tablet +  -->
                 <div class="d-none d-md-block">
                     <h5 class="mb-4">Filtri <font-awesome-icon icon="fa-solid fa-filter" class="filter" /></h5>
-                        <div class="ms-radio-ctn mb-4">
-                            <h6 class="mb-2">Valutazioni</h6>
-                            <form>
-                                <label v-for="n in 5">
-                                    <input type="radio" name="radio" :value="n" v-model="ratingValue"
-                                        @click="ratingValue = n" />
-                                    <span><font-awesome-icon v-for="n in n" icon="fa-solid fa-star"
-                                            class="ms-star" /></span>
-                                </label>
-                            </form>
-                        </div>
-                        <div class="ms-radio-ctn mb-3">
-                            <h6 class="mb-1">Recensioni</h6>
-                            <form>
-                                <label>
-                                    <input type="radio" name="radio" value="desc" v-model="reviewOrder" @click="reviewOrder = 'desc'" />
-                                    <span><font-awesome-icon icon="fa-solid fa-plus" /> Reviews</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="radio" value="asc"  v-model="reviewOrder" @click="reviewOrder = 'asc'"/>
-                                    <span><font-awesome-icon icon="fa-solid fa-minus"/> Reviews</span>
-                                </label>
-                            </form>
-                        </div>
-                        <button class="btn ms-btn-primary mb-3" @click="resetDatas">
-                            Reset
-                        </button>
+                    <div class="ms-radio-ctn mb-4">
+                        <h6 class="mb-2">Valutazioni</h6>
+                        <form>
+                            <label v-for="n in 5">
+                                <input type="radio" name="radio" :value="n" v-model="ratingValue"
+                                    @click="ratingValue = n" />
+                                <span><font-awesome-icon v-for="n in n" icon="fa-solid fa-star" class="ms-star" /></span>
+                            </label>
+                        </form>
                     </div>
-                    <!-- /versione tablet +  -->
+                    <div class="ms-radio-ctn mb-3">
+                        <h6 class="mb-1">Recensioni</h6>
+                        <form>
+                            <label>
+                                <input type="radio" name="radio" value="desc" v-model="reviewOrder"
+                                    @click="reviewOrder = 'desc'" />
+                                <span><font-awesome-icon icon="fa-solid fa-plus" /> Reviews</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="radio" value="asc" v-model="reviewOrder"
+                                    @click="reviewOrder = 'asc'" />
+                                <span><font-awesome-icon icon="fa-solid fa-minus" /> Reviews</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" name="no-review" value="no-review" v-model="hideNoReview"
+                                    @click="hideNoReview = !hideNoReview">
+                                <span>Nascondi senza review</span>
+                            </label>
+                        </form>
+                    </div>
+                    <button class="btn ms-btn-primary mb-3" @click="resetDatas">
+                        Reset
+                    </button>
+                </div>
+                <!-- /versione tablet +  -->
 
-                    <!-- versione mobile  -->
-                    <div class="d-md-none">
-                        <a class="btn ms-btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
-                            aria-controls="offcanvasExample">
-                            Filtro <font-awesome-icon icon="fa-solid fa-filter" class="filter" />
-                        </a>
+                <!-- versione mobile  -->
+                <div class="d-md-none">
+                    <a class="btn ms-btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+                        aria-controls="offcanvasExample">
+                        Filtro <font-awesome-icon icon="fa-solid fa-filter" class="filter" />
+                    </a>
 
-                        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
-                            aria-labelledby="offcanvasExampleLabel">
-                            <div class="offcanvas-header">
-                                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Filtri <font-awesome-icon icon="fa-solid fa-filter" class="filter" /></h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+                        aria-labelledby="offcanvasExampleLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Filtri <font-awesome-icon
+                                    icon="fa-solid fa-filter" class="filter" /></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <div class="ms-radio-ctn">
+                                <h6 class="mb-2">Valutazioni</h6>
+                                <form>
+                                    <label v-for="n in 5">
+                                        <input type="radio" name="radio" :value="n" v-model="ratingValue"
+                                            @click="ratingValue = n" />
+                                        <span><font-awesome-icon v-for="n in n" icon="fa-solid fa-star"
+                                                class="ms-star" /></span>
+                                    </label>
+                                </form>
                             </div>
-                            <div class="offcanvas-body">
-                                <div class="ms-radio-ctn">
-                                    <h6 class="mb-2">Valutazioni</h6>
-                                    <form>
-                                        <label v-for="n in 5">
-                                            <input type="radio" name="radio" :value="n" v-model="ratingValue"
-                                                @click="ratingValue = n" />
-                                            <span><font-awesome-icon v-for="n in n" icon="fa-solid fa-star"
-                                                    class="ms-star" /></span>
-                                        </label>
-                                    </form>
-                                </div>
-                                <div class="ms-radio-ctn my-2">
-                                    <h6 class="mb-1">Recensioni</h6>
-                                    <form>
-                                        <label>
-                                            <input type="radio" name="radio" value="desc" v-model="reviewOrder" @click="reviewOrder = 'desc'" />
-                                            <span><font-awesome-icon icon="fa-solid fa-plus" /> Reviews</span>
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="radio" value="asc"  v-model="reviewOrder" @click="reviewOrder = 'asc'"/>
-                                            <span><font-awesome-icon icon="fa-solid fa-minus" /> Reviews</span>
-                                        </label>
-                                    </form>
-                                </div>
-                                <button class="btn ms-btn-primary mb-3" @click="resetDatas">
-                                    Reset
-                                </button>
+                            <div class="ms-radio-ctn my-2">
+                                <h6 class="mb-1">Recensioni</h6>
+                                <form>
+                                    <label>
+                                        <input type="radio" name="radio" value="desc" v-model="reviewOrder"
+                                            @click="reviewOrder = 'desc'" />
+                                        <span><font-awesome-icon icon="fa-solid fa-plus" /> Reviews</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="radio" value="asc" v-model="reviewOrder"
+                                            @click="reviewOrder = 'asc'" />
+                                        <span><font-awesome-icon icon="fa-solid fa-minus" /> Reviews</span>
+                                    </label>
+                                </form>
                             </div>
+                            <button class="btn ms-btn-primary mb-3" @click="resetDatas">
+                                Reset
+                            </button>
                         </div>
                     </div>
-                     <!-- /versione mobile  -->
+                </div>
+                <!-- /versione mobile  -->
             </div>
             <!-- /side bar  -->
 
             <!-- AppCard -->
             <div class="main-content  d-flex flex-wrap">
                 <div v-for="doctor in orderDoctorList">
-                    <AppCard :doctor="doctor" v-if="votesAverage(doctor.votes) == ratingValue || ratingValue == null
-                        " />
+                    <AppCard :doctor="doctor"
+                        v-if="(votesAverage(doctor.votes) == ratingValue || ratingValue == null) && (checkDoctorReviews(doctor.reviews))" />
                 </div>
             </div>
             <!-- /AppCard -->
@@ -256,9 +278,8 @@ export default {
 
 @media screen and (min-width: 768px) {
     .main-content {
-            width: 75%;
-            border-left: 1px solid $main-background;
-            padding-left: 20px;
-        }
-}
-</style>
+        width: 75%;
+        border-left: 1px solid $main-background;
+        padding-left: 20px;
+    }
+}</style>

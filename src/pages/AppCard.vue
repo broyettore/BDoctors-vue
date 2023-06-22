@@ -45,6 +45,9 @@ export default {
         <li class="text-center">
           Valutazione: <font-awesome-icon v-for="n in votesAverage" icon="fa-solid fa-star" /> ({{ doctor.votes.length }})
         </li>
+        <li class="text-center">
+          Recensioni: {{ doctor.reviews.length }}
+        </li>
       </ul>
     </div>
   </div>
