@@ -22,11 +22,11 @@ export default {
                 <div class="container py-5">
                     <form class="d-flex justify-content-center">
                         <input class="form-control me-2 ms-search" type="search" placeholder="Cerca lo specialista di cui hai bisogno"
-                            aria-label="Search" v-model="query" >
-                            <router-link :to="{ name: 'list', params: { search: query } }" class="btn btn-primary"
-                            v-if="query.length > 0">
-                                Cerca
-                            </router-link>
+                        aria-label="Search" v-model="query" >
+                        <router-link :to="{ name: 'list', params: { search: query } }" class="btn btn-primary"
+                        v-if="query.length > 0">
+                            Cerca
+                        </router-link>
                     </form>
                 </div>
             </div>

@@ -12,15 +12,13 @@ export default {
 
 <template>
     <header>
-        <div class="container-header container d-flex justify-content-between align-items-center py-3">
-            <a href="." class="logo">
+        <div class="container-header container d-flex justify-content-between align-items-center py-4">
+            <a href="/" class="logo">
                 <h1>
-                <font-awesome-icon icon="fa-solid fa-notes-medical" class="px-3" />BDoctors 
-            </h1>
+                    <font-awesome-icon icon="fa-solid fa-notes-medical" class="px-3" />BDoctors 
+                </h1>
             </a>
-            <div>
-                <AppNavHeader />
-            </div>
+            <AppNavHeader />
         </div>
     </header>
 </template>

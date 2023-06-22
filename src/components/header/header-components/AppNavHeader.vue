@@ -6,9 +6,9 @@ export default {
 </script>
 
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav>
             <ul>
-                <li class="p-1 m-2">
+                <li class="ms-item">
                     <a href="http://127.0.0.1:8000">SEI DOTTORE ? ACCEDI</a>
                 </li>
             </ul>
@@ -33,13 +33,10 @@ export default {
     }
 }
 
-.ms-drop {
-    background-color: darken($color: $main-background, $amount: 20%);
-
-    .ms-item {
-        width: 200px;
-    }
+.ms-item {
+    width: 200px;
 }
+
 
 a {
     box-shadow: inset 0 0 0 0 #54b3d6;
@@ -75,11 +72,5 @@ a {
         font-size: 18px;
     }
 }
-@media (min-width: 992px) {
 
-    .ms-drop {
-        background-color: transparent;
-
-    }
-}
 </style>
