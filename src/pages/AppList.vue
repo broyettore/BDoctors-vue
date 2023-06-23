@@ -86,6 +86,8 @@ export default {
 
 <template>
     <main id="app-list-main">
+        <h1 class="text-center m-3">RISULTATI PER: {{ $route.params.search }}</h1>
+
         <div class="container ms-ctn d-flex flex-column flex-md-row py-5">
             <!-- side bar  -->
             <div class="side-bar  p-2 mb-2">
@@ -217,6 +219,10 @@ export default {
 
 #app-list-main {
     min-height: calc(100vh - 96px);
+
+    h1 {
+        color: $main-background;
+    }
 
     .filter {
         font-size: .925rem;
