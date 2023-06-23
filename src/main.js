@@ -10,6 +10,8 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faHouse as House } from '@fortawesome/free-solid-svg-icons'
 import { faStar as Star } from '@fortawesome/free-solid-svg-icons'
+import { faArrowUpWideShort as Arrow } from '@fortawesome/free-solid-svg-icons'
+
 
 /* import specific icons  */
 import { faFacebook, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
@@ -19,7 +21,7 @@ import { faPlus as plus } from '@fortawesome/free-solid-svg-icons';
 import { faMinus as minus} from '@fortawesome/free-solid-svg-icons';
 
 /* add icons */
-library.add(House, faFacebook, faTwitter, faInstagram, faLinkedinIn, faNotesMedical, Star, filter, plus, minus)
+library.add(House, faFacebook, faTwitter, faInstagram, faLinkedinIn, faNotesMedical, Star, filter, plus, minus, Arrow)
 
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(router).mount('#app')

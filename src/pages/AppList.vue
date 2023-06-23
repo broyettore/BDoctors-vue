@@ -92,7 +92,7 @@ export default {
                 <!-- versione tablet +  -->
                 <div class="d-none d-md-block">
                     <h5 class="mb-4">Filtri <font-awesome-icon icon="fa-solid fa-filter" class="filter" /></h5>
-                    <div class="ms-radio-ctn mb-4">
+                    <div class="ms-radio-ctn mb-2">
                         <h6 class="mb-2">Valutazioni</h6>
                         <form>
                             <label v-for="n in 5">
@@ -102,29 +102,9 @@ export default {
                             </label>
                         </form>
                     </div>
-                    <div class="ms-radio-ctn mb-3">
-                        <h6 class="mb-1">Recensioni</h6>
-                        <form>
-                            <label>
-                                <input type="radio" name="radio" value="desc" v-model="reviewOrder"
-                                    @click="reviewOrder = 'desc'" />
-                                <span><font-awesome-icon icon="fa-solid fa-plus" /> Reviews</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="radio" value="asc" v-model="reviewOrder"
-                                    @click="reviewOrder = 'asc'" />
-                                <span><font-awesome-icon icon="fa-solid fa-minus" /> Reviews</span>
-                            </label>
-                            <label>
-                                <input type="checkbox" name="no-review" value="no-review" v-model="hideNoReview"
-                                    @click="hideNoReview = !hideNoReview">
-                                <span>Nascondi senza review</span>
-                            </label>
-                        </form>
-                    </div>
 
                     <!--bottoni per filtrare le reviews-->
-                    <div class="ms-radio-ctn mb-3">
+                    <div class="ms-radio-ctn mb-1">
                         <h6 class="mb-1">Recensioni</h6>
                         <form>
                             <select v-model="reviewThreshold">
@@ -134,6 +114,30 @@ export default {
                                 <option value="20">Sopra 10</option>
                                 <option value="50">Sopra 20 </option>
                             </select>
+                            <label class="mt-2">
+                                <input type="checkbox" name="no-review" value="no-review" v-model="hideNoReview"
+                                    @click="hideNoReview = !hideNoReview">
+                                <span>Nascondi senza review</span>
+                            </label>
+                        </form>
+
+                    </div>
+
+                    <h5 class="mb-4">Ordinamento <font-awesome-icon icon="fa-solid fa-arrow-up-wide-short" class="filter"/></h5>
+
+                    <div class="ms-radio-ctn mb-3">
+                        <h6 class="mb-1">Recensioni</h6>
+                        <form>
+                            <label>
+                                <input type="radio" name="radio" value="desc" v-model="reviewOrder"
+                                    @click="reviewOrder = 'desc'" />
+                                <span>Più Reviews</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="radio" value="asc" v-model="reviewOrder"
+                                    @click="reviewOrder = 'asc'" />
+                                <span>Meno Reviews</span>
+                            </label>
                         </form>
                     </div>
 
@@ -307,23 +311,24 @@ export default {
     #app-list-main {
         .ms-ctn {
             .main-content {
-            border-left: 1px solid $main-background;
-            padding-left: 20px;
+                border-left: 1px solid $main-background;
+                padding-left: 20px;
             }
         }
 
     }
 }
+
 @media screen and (min-width: 992px) {
 
     #app-list-main {
         .ms-ctn {
             .main-content {
-            border-left: 1px solid $main-background;
-            padding-left: 20px;
-            width: 80%;
+                border-left: 1px solid $main-background;
+                padding-left: 20px;
+                width: 80%;
             }
-    
+
             .side-bar {
                 width: 20%;
             }
@@ -338,7 +343,7 @@ export default {
 
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
 
-#app-list-main {
+    #app-list-main {
         .ms-card-ctn {
             width: 364px;
         }
@@ -352,20 +357,20 @@ export default {
 
         .ms-ctn {
             .main-content {
-            border-left: 1px solid $main-background;
-            padding-left: 20px;
-            width: 82%;
+                border-left: 1px solid $main-background;
+                padding-left: 20px;
+                width: 82%;
             }
-    
+
             .side-bar {
                 width: 18%;
             }
         }
+
         .ms-card-ctn {
             width: calc(100% / 3);
         }
 
     }
 }
-
 </style>
