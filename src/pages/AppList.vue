@@ -15,7 +15,8 @@ export default {
             doctorsList: [],
             ratingValue: null,
             reviewOrder: null,
-            hideNoReview: false
+            hideNoReview: false,
+            reviewThreshold: null,
         };
     },
 
@@ -53,6 +54,10 @@ export default {
                 }
 
                 return false
+            }
+
+            if (this.reviewThreshold) {
+                return reviews.length >= this.reviewThreshold;
             }
 
             return true
@@ -117,6 +122,21 @@ export default {
                             </label>
                         </form>
                     </div>
+
+                    <!--bottoni per filtrare le reviews-->
+                    <div class="ms-radio-ctn mb-3">
+                        <h6 class="mb-1">Recensioni</h6>
+                        <form>
+                            <select v-model="reviewThreshold">
+                                <option value="">Tutte</option>
+                                <option value="3">Sopra 3</option>
+                                <option value="10">Sopra 5</option>
+                                <option value="20">Sopra 10</option>
+                                <option value="50">Sopra 20 </option>
+                            </select>
+                        </form>
+                    </div>
+
                     <button class="btn ms-btn-primary mb-3" @click="resetDatas">
                         Reset
                     </button>
