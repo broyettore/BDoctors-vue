@@ -103,17 +103,17 @@ export default {
                         </form>
                     </div>
                     <div class="ms-radio-ctn mb-3">
-                        <h6 class="mb-1">Recensioni</h6>
+                        <h6 class="mb-1">Ordina le recensioni per chi ha:</h6>
                         <form>
                             <label>
                                 <input type="radio" name="radio" value="desc" v-model="reviewOrder"
                                     @click="reviewOrder = 'desc'" />
-                                <span><font-awesome-icon icon="fa-solid fa-plus" /> Reviews</span>
+                                <span><font-awesome-icon icon="fa-solid fa-plus" class="p-2" /> Reviews</span>
                             </label>
                             <label>
                                 <input type="radio" name="radio" value="asc" v-model="reviewOrder"
                                     @click="reviewOrder = 'asc'" />
-                                <span><font-awesome-icon icon="fa-solid fa-minus" /> Reviews</span>
+                                <span><font-awesome-icon icon="fa-solid fa-minus" class="p-2" /> Reviews</span>
                             </label>
                             <label>
                                 <input type="checkbox" name="no-review" value="no-review" v-model="hideNoReview"
@@ -307,23 +307,24 @@ export default {
     #app-list-main {
         .ms-ctn {
             .main-content {
-            border-left: 1px solid $main-background;
-            padding-left: 20px;
+                border-left: 1px solid $main-background;
+                padding-left: 20px;
             }
         }
 
     }
 }
+
 @media screen and (min-width: 992px) {
 
     #app-list-main {
         .ms-ctn {
             .main-content {
-            border-left: 1px solid $main-background;
-            padding-left: 20px;
-            width: 80%;
+                border-left: 1px solid $main-background;
+                padding-left: 20px;
+                width: 80%;
             }
-    
+
             .side-bar {
                 width: 20%;
             }
@@ -338,7 +339,7 @@ export default {
 
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
 
-#app-list-main {
+    #app-list-main {
         .ms-card-ctn {
             width: 364px;
         }
@@ -352,20 +353,20 @@ export default {
 
         .ms-ctn {
             .main-content {
-            border-left: 1px solid $main-background;
-            padding-left: 20px;
-            width: 82%;
+                border-left: 1px solid $main-background;
+                padding-left: 20px;
+                width: 82%;
             }
-    
+
             .side-bar {
                 width: 18%;
             }
         }
+
         .ms-card-ctn {
             width: calc(100% / 3);
         }
 
     }
 }
-
 </style>
