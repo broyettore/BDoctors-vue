@@ -26,33 +26,33 @@ export default {
 </script>
 
 <template>
-    <div class="card-ctn">
-      <span class="pro">SPONSOR</span>
-      <img v-if="doctor.photo != '' && doctor.photo != null" :src="this.store.testApi + doctor.photo" :alt="doctor.photo"
-        class="round ms-profile" />
-      <img v-else src="/avatar-medico-edited.jpg" class="round ms-profile" :alt="doctor.last_name + 'photo'" />
-      <h3>{{ doctor.user.first_name }} {{ doctor.user.last_name }}</h3>
-      <h5 class="fs-5">{{ doctor.address }}</h5>
-      <p class="fs-5">{{ doctor.services }}</p>
-      <h6>{{ doctor.phone_number }}</h6>
-      <div class="buttons">
-        <button class="primary">Prenota</button>
-      </div>
-      <div class="vote_review">
-        <h6></h6>
-        <ul>
-          <li class="text-center" v-if="doctor.votes.length > 0">
-            Valutazione: <font-awesome-icon v-for="n in votesAverage" icon="fa-solid fa-star" />
-          </li>
-          <li class="text-center" v-else="doctor.votes.length === 0">
-            Nessuna valutazione
-          </li>
-          <li class="text-center">
-            Recensioni: {{ doctor.reviews.length }}
-          </li>
-        </ul>
-      </div>
+  <div class="card-ctn">
+    <span class="pro">SPONSOR</span>
+    <img v-if="doctor.photo != '' && doctor.photo != null" :src="this.store.testApi + doctor.photo" :alt="doctor.photo"
+      class="round ms-profile" />
+    <img v-else src="/avatar-medico-edited.jpg" class="round ms-profile" :alt="doctor.last_name + 'photo'" />
+    <h3>{{ doctor.user.first_name }} {{ doctor.user.last_name }}</h3>
+    <h5 class="fs-5">{{ doctor.address }}</h5>
+    <p class="fs-5">{{ doctor.services }}</p>
+    <h6>{{ doctor.phone_number }}</h6>
+    <div class="buttons">
+      <button class="primary">Prenota</button>
     </div>
+    <div class="vote_review">
+      <h6></h6>
+      <ul>
+        <li class="text-center" v-if="doctor.votes.length > 0">
+          Valutazione: <font-awesome-icon v-for="n in votesAverage" icon="fa-solid fa-star" />
+        </li>
+        <li class="text-center" v-else="doctor.votes.length === 0">
+          Nessuna valutazione
+        </li>
+        <li class="text-center">
+          Recensioni: {{ doctor.reviews.length }}
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <style scoped lang="scss">
@@ -140,10 +140,9 @@ export default {
 
 @media screen and (min-width: 992px) {
 
-    .card-ctn {
-      width: 100%;
-    }
+  .card-ctn {
+    width: 100%;
+  }
 
 }
-
 </style>
