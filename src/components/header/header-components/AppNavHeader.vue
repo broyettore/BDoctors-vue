@@ -8,8 +8,13 @@ export default {
 <template>
     <nav>
             <ul>
-                <li class="ms-item">
-                    <a href="http://127.0.0.1:8000">SEI DOTTORE ? ACCEDI</a>
+                <li class="ms-item d-flex flex-row-reverse">
+                    <div>SEI DOTTORE ?
+                        &nbsp
+                        <a href="http://127.0.0.1:8000/login">ACCEDI</a>
+                        &nbsp
+                        <a href="http://127.0.0.1:8000/register">REGISTRATI</a>
+                    </div>
                 </li>
             </ul>
     </nav>
@@ -34,7 +39,7 @@ export default {
 }
 
 .ms-item {
-    width: 200px;
+    width: 300px;
 }
 
 
