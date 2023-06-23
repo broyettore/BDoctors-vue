@@ -83,7 +83,7 @@ export default {
     <main id="app-list-main">
         <div class="container ms-ctn d-flex flex-column flex-md-row py-5">
             <!-- side bar  -->
-            <div class="side-bar p-2 mb-2">
+            <div class="side-bar  p-2 mb-2">
                 <!-- versione tablet +  -->
                 <div class="d-none d-md-block">
                     <h5 class="mb-4">Filtri <font-awesome-icon icon="fa-solid fa-filter" class="filter" /></h5>
@@ -125,9 +125,9 @@ export default {
 
                 <!-- versione mobile  -->
                 <div class="d-md-none">
-                    <a class="btn ms-btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+                    <a class="btn ms-btn-primary py-2" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
                         aria-controls="offcanvasExample">
-                        Filtro <font-awesome-icon icon="fa-solid fa-filter" class="filter" />
+                        Filtri <font-awesome-icon icon="fa-solid fa-filter" class="filter" />
                     </a>
 
                     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
@@ -180,8 +180,8 @@ export default {
             <!-- /side bar  -->
 
             <!-- AppCard -->
-            <div class="main-content  d-flex flex-wrap">
-                <div v-for="doctor in orderDoctorList">
+            <div class="main-content  d-flex flex-column flex-md-row flex-wrap">
+                <div v-for="doctor in orderDoctorList" class="ms-card-ctn p-2">
                     <AppCard :doctor="doctor"
                         v-if="(votesAverage(doctor.votes) == ratingValue || ratingValue == null) && (checkDoctorReviews(doctor.reviews))" />
                 </div>
@@ -204,16 +204,17 @@ export default {
 
     .ms-ctn {
         .side-bar {
-            width: 25%;
+            width: 40%;
         }
 
         .main-content {
-            width: 75%;
+            width: 60%;
         }
 
         .ms-btn-primary {
             background-color: $main-background;
             color: $header-text;
+            min-width: 90px;
 
             &:hover {
                 transform: scale(1.1);
@@ -282,10 +283,69 @@ export default {
 }
 
 @media screen and (min-width: 768px) {
-    .main-content {
-        width: 75%;
-        border-left: 1px solid $main-background;
-        padding-left: 20px;
+
+    #app-list-main {
+        .ms-ctn {
+            .main-content {
+            border-left: 1px solid $main-background;
+            padding-left: 20px;
+            }
+        }
+
     }
 }
+@media screen and (min-width: 992px) {
+
+    #app-list-main {
+        .ms-ctn {
+            .main-content {
+            border-left: 1px solid $main-background;
+            padding-left: 20px;
+            width: 80%;
+            }
+    
+            .side-bar {
+                width: 20%;
+            }
+        }
+
+        .ms-card-ctn {
+            width: calc(100% / 2);
+        }
+
+    }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+
+#app-list-main {
+        .ms-card-ctn {
+            width: 364px;
+        }
+    }
+}
+
+
+@media screen and (min-width: 1400px) {
+
+    #app-list-main {
+
+        .ms-ctn {
+            .main-content {
+            border-left: 1px solid $main-background;
+            padding-left: 20px;
+            width: 82%;
+            }
+    
+            .side-bar {
+                width: 18%;
+            }
+        }
+        .ms-card-ctn {
+            width: calc(100% / 3);
+        }
+
+    }
+}
+
 </style>
