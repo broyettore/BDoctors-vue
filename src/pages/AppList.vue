@@ -46,22 +46,23 @@ export default {
             this.ratingValue = null;
             this.reviewOrder = null;
             this.hideNoReview = false;
+            this.reviewThreshold = null;
         },
         checkDoctorReviews(reviews) {
             if (this.hideNoReview) {
                 if (reviews[0]) {
-                    return true
+                    return true;
                 }
 
-                return false
+                return false;
             }
 
             if (this.reviewThreshold) {
                 return reviews.length >= this.reviewThreshold;
             }
 
-            return true
-        }
+            return true;
+        },
     },
     created() {
         this.getDoctors();
@@ -79,23 +80,31 @@ export default {
             } else {
                 return this.doctorsList.sort((a, b) => b.id - a.id);
             }
-        }
+        },
     },
 };
 </script>
 
 <template>
     <main id="app-list-main">
-        <h1 class="text-center m-3">RISULTATI PER: {{ $route.params.search }}</h1>
+        <h1 class="text-center  py-4 fs-3">
+            RISULTATI PER: {{ $route.params.search.toUpperCase() }} ({{
+                doctorsList.length
+            }}
+            risultati)
+        </h1>
 
-        <div class="container ms-ctn d-flex flex-column flex-md-row py-5">
+        <div class="container ms-ctn d-flex flex-column flex-md-row py-1">
             <!-- side bar  -->
-            <div class="side-bar  p-2 mb-2">
+            <div class="side-bar pe-4 mb-2">
                 <!-- versione tablet +  -->
                 <div class="d-none d-md-block">
-                    <h5 class="mb-4">Filtri <font-awesome-icon icon="fa-solid fa-filter" class="filter" /></h5>
+                    <h5 class="mb-4">
+                        Filtri
+                        <font-awesome-icon icon="fa-solid fa-filter" class="filter" />
+                    </h5>
                     <div class="ms-radio-ctn mb-4">
-                        <h6 class="mb-2">Valutazioni</h6>
+                        <h6 class="mb-2">Valutazioni:</h6>
                         <form>
                             <label v-for="n in 5">
                                 <input type="radio" name="radio" :value="n" v-model="ratingValue"
@@ -105,36 +114,36 @@ export default {
                         </form>
                     </div>
                     <div class="ms-radio-ctn mb-3">
-                        <h6 class="mb-1">Ordina le recensioni per chi ha:</h6>
+                        <h6 class="mb-2">Ordina le recensioni per chi ha:</h6>
                         <form>
                             <label>
                                 <input type="radio" name="radio" value="desc" v-model="reviewOrder"
                                     @click="reviewOrder = 'desc'" />
-                                <span><font-awesome-icon icon="fa-solid fa-plus" class="p-2" /> Reviews</span>
+                                <span>Più Recensioni</span>
                             </label>
                             <label>
                                 <input type="radio" name="radio" value="asc" v-model="reviewOrder"
                                     @click="reviewOrder = 'asc'" />
-                                <span><font-awesome-icon icon="fa-solid fa-minus" class="p-2" /> Reviews</span>
+                                <span>Meno Recensioni</span>
                             </label>
                             <label>
                                 <input type="checkbox" name="no-review" value="no-review" v-model="hideNoReview"
-                                    @click="hideNoReview = !hideNoReview">
-                                <span>Nascondi senza review</span>
+                                    @click="hideNoReview = !hideNoReview" />
+                                <span>Nascondi senza recensioni</span>
                             </label>
                         </form>
                     </div>
 
                     <!--bottoni per filtrare le reviews-->
                     <div class="ms-radio-ctn mb-3">
-                        <h6 class="mb-1">Recensioni</h6>
+                        <h6 class="mb-2">Recensioni:</h6>
                         <form>
-                            <select v-model="reviewThreshold">
+                            <select v-model="reviewThreshold" class="ms-select">
                                 <option value="">Tutte</option>
                                 <option value="3">Sopra 3</option>
                                 <option value="10">Sopra 5</option>
                                 <option value="20">Sopra 10</option>
-                                <option value="50">Sopra 20 </option>
+                                <option value="50">Sopra 20</option>
                             </select>
                         </form>
                     </div>
@@ -149,19 +158,22 @@ export default {
                 <div class="d-md-none">
                     <a class="btn ms-btn-primary py-2" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
                         aria-controls="offcanvasExample">
-                        Filtri <font-awesome-icon icon="fa-solid fa-filter" class="filter" />
+                        Filtri
+                        <font-awesome-icon icon="fa-solid fa-filter" class="filter" />
                     </a>
 
                     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
                         aria-labelledby="offcanvasExampleLabel">
                         <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Filtri <font-awesome-icon
-                                    icon="fa-solid fa-filter" class="filter" /></h5>
+                            <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+                                Filtri
+                                <font-awesome-icon icon="fa-solid fa-filter" class="filter" />
+                            </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
-                            <div class="ms-radio-ctn">
-                                <h6 class="mb-2">Valutazioni</h6>
+                            <div class="ms-radio-ctn mb-3">
+                                <h6 class="mb-2">Valutazioni:</h6>
                                 <form>
                                     <label v-for="n in 5">
                                         <input type="radio" name="radio" :value="n" v-model="ratingValue"
@@ -171,25 +183,38 @@ export default {
                                     </label>
                                 </form>
                             </div>
-                            <div class="ms-radio-ctn my-2">
-                                <h6 class="mb-1">Recensioni</h6>
+                            <div class="ms-radio-ctn mb-3">
+                                <h6 class="mb-2">Ordina le recensioni per chi ha:</h6>
                                 <form>
                                     <label>
                                         <input type="radio" name="radio" value="desc" v-model="reviewOrder"
                                             @click="reviewOrder = 'desc'" />
-                                        <span><font-awesome-icon icon="fa-solid fa-plus" /> Reviews</span>
+                                        <span>Più Recensioni</span>
                                     </label>
                                     <label>
                                         <input type="radio" name="radio" value="asc" v-model="reviewOrder"
                                             @click="reviewOrder = 'asc'" />
-                                        <span><font-awesome-icon icon="fa-solid fa-minus" /> Reviews</span>
+                                        <span>Meno Recensioni</span>
                                     </label>
                                     <label>
                                         <input type="checkbox" name="no-review" value="no-review" v-model="hideNoReview"
-                                            @click="hideNoReview = !hideNoReview">
-                                        <span>Nascondi senza review</span>
+                                            @click="hideNoReview = !hideNoReview" />
+                                        <span>Nascondi senza recensioni</span>
                                     </label>
                                 </form>
+                                <!--bottoni per filtrare le reviews-->
+                                <div class="ms-radio-ctn mb-3">
+                                    <h6 class="mb-2">Recensioni:</h6>
+                                    <form>
+                                        <select v-model="reviewThreshold" class="ms-select">
+                                            <option value="">Tutte</option>
+                                            <option value="3">Sopra 3</option>
+                                            <option value="10">Sopra 5</option>
+                                            <option value="20">Sopra 10</option>
+                                            <option value="50">Sopra 20</option>
+                                        </select>
+                                    </form>
+                                </div>
                             </div>
                             <button class="btn ms-btn-primary mb-3" @click="resetDatas">
                                 Reset
@@ -202,14 +227,13 @@ export default {
             <!-- /side bar  -->
 
             <!-- AppCard -->
-            <div class="main-content  d-flex flex-column flex-md-row flex-wrap">
-                <div v-for="doctor in orderDoctorList" class="ms-card-ctn p-2">
-                    <AppCard :doctor="doctor"
-                        v-if="(votesAverage(doctor.votes) == ratingValue || ratingValue == null) && (checkDoctorReviews(doctor.reviews))" />
+            <div class="main-content d-flex flex-column flex-md-row flex-wrap">
+                <div v-for="doctor in orderDoctorList" class="ms-card-ctn">
+                    <AppCard :doctor="doctor" v-if="(votesAverage(doctor.votes) == ratingValue ||
+                        ratingValue == null) && checkDoctorReviews(doctor.reviews)"/>
                 </div>
             </div>
             <!-- /AppCard -->
-
         </div>
     </main>
 </template>
@@ -225,7 +249,15 @@ export default {
     }
 
     .filter {
-        font-size: .925rem;
+        font-size: 0.925rem;
+    }
+
+    .ms-select {
+        background-color: transparent;
+        border: 2px solid $main-background;
+        border-radius: 10px;
+        padding: 2px 4px;
+        cursor: pointer;
     }
 
     .ms-ctn {
@@ -235,6 +267,11 @@ export default {
 
         .main-content {
             width: 60%;
+            margin: 0 -8px;
+
+            .ms-card-ctn {
+                margin: 8px;
+            }
         }
 
         .ms-btn-primary {
@@ -309,7 +346,6 @@ export default {
 }
 
 @media screen and (min-width: 768px) {
-
     #app-list-main {
         .ms-ctn {
             .main-content {
@@ -317,12 +353,10 @@ export default {
                 padding-left: 20px;
             }
         }
-
     }
 }
 
 @media screen and (min-width: 992px) {
-
     #app-list-main {
         .ms-ctn {
             .main-content {
@@ -336,27 +370,11 @@ export default {
             }
         }
 
-        .ms-card-ctn {
-            width: calc(100% / 2);
-        }
-
     }
 }
-
-@media screen and (min-width: 1200px) and (max-width: 1400px) {
-
-    #app-list-main {
-        .ms-card-ctn {
-            width: 364px;
-        }
-    }
-}
-
 
 @media screen and (min-width: 1400px) {
-
     #app-list-main {
-
         .ms-ctn {
             .main-content {
                 border-left: 1px solid $main-background;
@@ -368,11 +386,6 @@ export default {
                 width: 18%;
             }
         }
-
-        .ms-card-ctn {
-            width: calc(100% / 3);
-        }
-
     }
 }
 </style>

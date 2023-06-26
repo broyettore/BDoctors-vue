@@ -141,8 +141,20 @@ export default {
 @media screen and (min-width: 992px) {
 
   .card-ctn {
-    width: 100%;
+    width: 340px;
   }
+}
 
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+  .card-ctn {
+    width: 354px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .card-ctn {
+    width: 330px;
+  }
+    
 }
 </style>
