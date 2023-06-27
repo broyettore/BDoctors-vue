@@ -100,7 +100,7 @@ export default {
 <template>
     <AppSearch></AppSearch>
     <main id="app-list-main">
-        <h1 class="text-center  py-4 fs-3">
+        <h1 class="text-center  py-3 fs-4">
             RISULTATI PER: {{ $route.params.search.toUpperCase() }} ({{
                 doctorsList.length
             }}

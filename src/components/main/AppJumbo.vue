@@ -1,16 +1,37 @@
 <script>
 import store from '../../store';
 import AppSearch from './AppSearch.vue';
+import axios from 'axios';
+import AppCard from '../../pages/AppCard.vue';
+
 export default {
     name: "AppJumbo",
     components: {
         AppSearch,
+        AppCard,
     },
     data() {
         return {
             store,
+            sponsoredDoctors: null,
         }
     },
+    methods: {
+
+        getSponsoredDoctors() {
+            axios.get("http://127.0.0.1:8000/api/doctor/sponsored")
+                .then((response) => {
+                    this.sponsoredDoctors = response.data.results;
+                    console.log(this.sponsoredDoctors);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
+    },
+    created() {
+        this.getSponsoredDoctors();
+    }
 }
 </script>
 
@@ -22,13 +43,31 @@ export default {
             </div>
             <AppSearch></AppSearch>
         </div>
-
-
+    </section>
+    <section id="sponsored" class="d-flex flex-column justify-content-center align-items-center">
+        <h2 class="mb-4 fs-2">Medici In Evidenza</h2>
+        <div class="card-sponsored d-flex justify-content-center gap-5">
+            <div v-for="sponsoredDoctor in sponsoredDoctors">
+                <AppCard :doctor="sponsoredDoctor" class="h-100" />
+            </div>
+        </div>
     </section>
 </template>
 
 <style lang="scss" scoped>
 @use "../../assets/styles/_partials/variables.scss" as *;
+
+
+#sponsored {
+    background-color: darken($color: $header-background, $amount: 20%);
+    color: $header-text ;
+    padding: 50px 0;
+
+    .card-sponsored {
+        width: 100%;
+    }
+
+}
 
 #jumbo {
     background-color: $header-background;

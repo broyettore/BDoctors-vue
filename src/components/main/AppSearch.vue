@@ -74,8 +74,8 @@ export default {
 </script>
 
 <template>
-    <div class="container-s-bar d-flex align-items-center justify-content-center ">
-        <div class="container py-2">
+    <div class="container-s-bar d-flex align-items-center justify-content-center py-2 pt-4">
+        <div class="container">
             <form class="ms-search d-flex justify-content-center" id="search-form" @submit.prevent="goToDoctorsList">
                 <div class="text-container">
                     <input class="form-control me-2 " type="text" placeholder="Cerca lo specialista di cui hai bisogno"

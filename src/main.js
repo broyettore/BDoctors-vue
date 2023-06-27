@@ -5,6 +5,7 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import App from './App.vue'
 import * as bootstrap from 'bootstrap'
 
+
 /* /* import the fontawesome core / */
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';

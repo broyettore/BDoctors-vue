@@ -44,7 +44,7 @@ export default {
 </script>
 
 <template>
-  <div class="card-ctn">
+  <div class="card-ctn d-flex flex-column align-items-center">
     <div v-for="sponsoredDoctor in sponsoredDoctors">
       <span class="pro" v-if="sponsoredDoctor.user.id === doctor.id">SPONSOR</span>
     </div>
@@ -55,13 +55,12 @@ export default {
     <h5 class="fs-5">{{ doctor.address }}</h5>
     <p class="fs-5">{{ doctor.services }}</p>
     <h6>{{ doctor.phone_number }}</h6>
-    <div class="buttons">
-      <button class="primary">Prenota</button>
-    </div>
-    <div class="vote_review">
-      <h6></h6>
+    <div class="vote_review mt-auto d-flex flex-column align-items-center">
+      <div class="buttons mt-auto ">
+        <button class="primary my-2">Prenota</button>
+      </div>
       <ul>
-        <li class="text-center" v-if="doctor.votes.length > 0">
+        <li class="text-center " v-if="doctor.votes.length > 0">
           Valutazione:
           <font-awesome-icon v-for="n in votesAverage" icon="fa-solid fa-star" />
         </li>
@@ -154,6 +153,7 @@ export default {
     text-align: left;
     padding: 15px;
     margin-top: 30px;
+    width: 100%;
   }
 }
 

@@ -12,7 +12,7 @@ export default {
 <template>
     <footer class="footer">
         <div class="container py-4">
-            <div class="row row-cols-3 row-cols-md-4 py-3 mb-4 d-flex justify-content-center">
+            <div class="row row-cols-2 row-cols-md-4 py-3 mb-4 d-flex justify-content-center">
                 <div class="col mb-3">
                     <h4 class="mb-3">Informazioni di contatto:</h4>
                     <ul>
@@ -47,12 +47,6 @@ export default {
                                 instagram
                             </a>
                         </li>
-                    </ul>
-                </div>
-                <div class="col">
-                    <h4 class="mb-3">Contatta l'assistenza:</h4>
-                    <ul>
-                        <li>prova</li>
                     </ul>
                 </div>
             </div>
