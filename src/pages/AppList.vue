@@ -1,5 +1,6 @@
 <script>
 import AppCard from "./AppCard.vue";
+import AppSearch from "../components/main/AppSearch.vue";
 import store from "../store";
 import axios from "axios";
 export default {
@@ -7,6 +8,7 @@ export default {
     name: "AppList",
     components: {
         AppCard,
+        AppSearch,
     },
 
     data() {
@@ -81,12 +83,24 @@ export default {
             }
         }
     },
+    watch: {
+        '$route': {
+            immediate: true,
+            handler() {
+                this.getDoctors();
+                store.showSuggestions = false;
+            },
+            
+        }
+        
+    },
 };
 </script>
 
 <template>
+    <AppSearch></AppSearch>
     <main id="app-list-main">
-        <div class="container ms-ctn d-flex flex-column flex-md-row py-5">
+        <div class="container ms-ctn d-flex flex-column flex-md-row pb-2">
             <!-- side bar  -->
             <div class="side-bar p-2 mb-2">
                 <!-- versione tablet +  -->

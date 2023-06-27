@@ -1,42 +1,26 @@
 <script>
 import store from '../../store';
+import AppSearch from './AppSearch.vue';
 export default {
     name: "AppJumbo",
+    components: {
+        AppSearch,
+    },
     data() {
         return {
             store,
-            query: "",
         }
     },
-    methods: {
- 
-        goToDoctorsList() {
-            console.log("eseguita")
-            this.$router.push({ name: 'list', params: { search: this.query } })
-        }
-    }
 }
 </script>
 
 <template>
     <section id="jumbo">
         <div class="container">
-            <div class="d-flex justify-content-center text-center">
+            <div class="d-flex justify-content-center text-center mb-5">
                 <h1>NON È MAI STATO COSÌ SEMPLICE CHIAMARE UN DOTTORE</h1>
             </div>
-
-            <div class="container-s-bar d-flex align-items-center justify-content-center ">
-                <div class="container py-5">
-                    <form class="d-flex justify-content-center" @submit.prevent="goToDoctorsList">
-                        <input class="form-control me-2 ms-search" type="text" placeholder="Cerca lo specialista di cui hai bisogno"
-                        aria-label="Search" v-model="query" @submit.prevent="goToDoctorsList">
-                        <router-link :to="{ name: 'list', params: { search: query } }" class="btn btn-primary"
-                        v-if="query.length > 0">
-                            Cerca
-                        </router-link>
-                    </form>
-                </div>
-            </div>
+            <AppSearch></AppSearch>
         </div>
 
 
@@ -60,6 +44,45 @@ export default {
 
 .ms-search {
     max-width: 600px;
+    margin: 0 auto;
+}
+
+#search-form {
+    position: relative;
+
+    .text-container {
+        width: 100%;
+
+        input {
+            width: 100%;
+        }
+
+        #search-list {
+            position: absolute;
+            width: 100%;
+            left: 0px;
+            top: 38px;
+            background-color: white;
+            color: black;
+
+            li:hover {
+                cursor: pointer;
+                background-color: rgb(224, 224, 224);
+            }
+
+            li:first-child {
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+            }
+
+            li:last-child {
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+            }
+
+
+        }
+    }
 }
 
 @media (max-width: 480px) {
