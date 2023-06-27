@@ -17,7 +17,7 @@ export default {
             ratingValue: null,
             reviewOrder: null,
             hideNoReview: false,
-            reviewThreshold: null,
+            reviewThreshold: 0,
         };
     },
 
@@ -47,7 +47,7 @@ export default {
             this.ratingValue = null;
             this.reviewOrder = null;
             this.hideNoReview = false;
-            this.reviewThreshold = null;
+            this.reviewThreshold = 0;
         },
         checkDoctorReviews(reviews) {
             if (this.hideNoReview) {
@@ -138,7 +138,7 @@ export default {
                                 <span>Nascondi senza recensioni</span>
                             </label>
                             <select v-model="reviewThreshold" class="ms-select">
-                                <option value="">Tutte</option>
+                                <option value="0" selected>Tutte</option>
                                 <option value="3">Sopra 3</option>
                                 <option value="10">Sopra 5</option>
                                 <option value="20">Sopra 10</option>
@@ -209,14 +209,14 @@ export default {
                                             @click="hideNoReview = !hideNoReview" />
                                         <span>Nascondi senza recensioni</span>
                                     </label>
-                                    <select v-model="reviewThreshold" class="ms-select">
-                                        <option value="">Tutte</option>
-                                        <option value="3">Sopra 3</option>
-                                        <option value="10">Sopra 5</option>
-                                        <option value="20">Sopra 10</option>
-                                        <option value="50">Sopra 20</option>
-                                    </select>
                                 </form>
+                                <select v-model="reviewThreshold" class="ms-select">
+                                    <option value="0" selected>Tutte</option>
+                                    <option value="3">Sopra 3</option>
+                                    <option value="10">Sopra 5</option>
+                                    <option value="20">Sopra 10</option>
+                                    <option value="50">Sopra 20</option>
+                                </select>
                             </div>
                             <div class="ms-radio-ctn mb-3">
                                 <h5 class="mb-3">Ordinamento <font-awesome-icon icon="fa-solid fa-arrow-up-wide-short"
