@@ -4,7 +4,6 @@ import AppSearch from "../components/main/AppSearch.vue";
 import store from "../store";
 import axios from "axios";
 export default {
-    //name: "DoctorList", //??
     name: "AppList",
     components: {
         AppCard,
