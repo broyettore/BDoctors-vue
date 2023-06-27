@@ -13,7 +13,7 @@ export default {
     data() {
         return {
             store,
-            sponsoredDoctors: null,
+            sponsoredDoctors: [],
         }
     },
     methods: {
@@ -44,7 +44,7 @@ export default {
             <AppSearch></AppSearch>
         </div>
     </section>
-    <section id="sponsored" class="d-flex flex-column justify-content-center align-items-center">
+    <section id="sponsored" class="d-flex flex-column justify-content-center align-items-center" v-if="sponsoredDoctors.length > 0">
         <h2 class="mb-4 fs-2">Medici In Evidenza</h2>
         <div class="card-sponsored d-flex justify-content-center gap-5">
             <div v-for="sponsoredDoctor in sponsoredDoctors">
