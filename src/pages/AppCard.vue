@@ -84,6 +84,7 @@ export default {
   padding-top: 30px;
   position: relative;
   width: 350px;
+  height: 550px;
   max-width: 100%;
   text-align: center;
 
