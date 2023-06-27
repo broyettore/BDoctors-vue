@@ -79,7 +79,9 @@ export default {
                     (a, b) => b.reviews.length - a.reviews.length
                 );
             } else {
-                return this.doctorsList.sort((a, b) => b.id - a.id);
+                return this.doctorsList.sort(
+                    (a, b) => b.sponsorships.length - a.sponsorships.length
+                );
             }
         },
     },
@@ -131,10 +133,10 @@ export default {
                         <h6 class="mb-2">Recensioni:</h6>
                         <form>
                             <label>
-                                    <input type="checkbox" name="no-review" value="no-review" v-model="hideNoReview"
-                                        @click="hideNoReview = !hideNoReview" />
-                                    <span>Nascondi senza recensioni</span>
-                                </label>
+                                <input type="checkbox" name="no-review" value="no-review" v-model="hideNoReview"
+                                    @click="hideNoReview = !hideNoReview" />
+                                <span>Nascondi senza recensioni</span>
+                            </label>
                             <select v-model="reviewThreshold" class="ms-select">
                                 <option value="">Tutte</option>
                                 <option value="3">Sopra 3</option>
@@ -145,7 +147,8 @@ export default {
                         </form>
                     </div>
                     <div class="ms-radio-ctn mb-2">
-                        <h5 class="mb-3">Ordinamento <font-awesome-icon icon="fa-solid fa-arrow-up-wide-short"  class="fs-5"/></h5>
+                        <h5 class="mb-3">Ordinamento <font-awesome-icon icon="fa-solid fa-arrow-up-wide-short"
+                                class="fs-5" /></h5>
                         <h6 class="mb-2">Ordina le recensioni per chi ha:</h6>
                         <form>
                             <label>
@@ -158,7 +161,7 @@ export default {
                                     @click="reviewOrder = 'asc'" />
                                 <span>Meno Recensioni</span>
                             </label>
-                
+
                         </form>
                     </div>
 
@@ -216,7 +219,8 @@ export default {
                                 </form>
                             </div>
                             <div class="ms-radio-ctn mb-3">
-                                <h5 class="mb-3">Ordinamento <font-awesome-icon icon="fa-solid fa-arrow-up-wide-short"  class="fs-5"/></h5>
+                                <h5 class="mb-3">Ordinamento <font-awesome-icon icon="fa-solid fa-arrow-up-wide-short"
+                                        class="fs-5" /></h5>
                                 <h6 class="mb-2">Ordina le recensioni per chi ha:</h6>
                                 <form>
                                     <label>
@@ -228,7 +232,7 @@ export default {
                                         <input type="radio" name="radio" value="asc" v-model="reviewOrder"
                                             @click="reviewOrder = 'asc'" />
                                         <span>Meno Recensioni</span>
-                                    </label>               
+                                    </label>
                                 </form>
 
                             </div>
