@@ -1,11 +1,26 @@
 <script>
 import store from "../store";
+import axios from "axios";
 export default {
   name: "AppCard",
   data() {
     return {
       store,
+      sponsoredDoctors: null,
     };
+  },
+  methods: {
+
+  getSponsoredDoctors() {
+    axios.get("http://127.0.0.1:8000/api/doctor/sponsored")
+  .then((response) => {
+                  this.sponsoredDoctors = response.data.results;
+                  console.log(this.sponsoredDoctors);
+              })
+              .catch((error) => {
+                  console.log(error);
+              });
+          }
   },
   props: {
     doctor: Object,
@@ -22,12 +37,17 @@ export default {
       return Math.floor(avg);
     },
   },
+  created() {
+    this.getSponsoredDoctors();
+  }
 };
 </script>
 
 <template>
   <div class="card-ctn">
-    <span class="pro">SPONSOR</span>
+    <div v-for="sponsoredDoctor in sponsoredDoctors">
+      <span class="pro" v-if="sponsoredDoctor.user.id === doctor.id">SPONSOR</span>
+    </div>
     <img v-if="doctor.photo != '' && doctor.photo != null" :src="this.store.testApi + doctor.photo" :alt="doctor.photo"
       class="round ms-profile" />
     <img v-else src="/avatar-medico-edited.jpg" class="round ms-profile" :alt="doctor.last_name + 'photo'" />
@@ -42,14 +62,13 @@ export default {
       <h6></h6>
       <ul>
         <li class="text-center" v-if="doctor.votes.length > 0">
-          Valutazione: <font-awesome-icon v-for="n in votesAverage" icon="fa-solid fa-star" />
+          Valutazione:
+          <font-awesome-icon v-for="n in votesAverage" icon="fa-solid fa-star" />
         </li>
         <li class="text-center" v-else="doctor.votes.length === 0">
           Nessuna valutazione
         </li>
-        <li class="text-center">
-          Recensioni: {{ doctor.reviews.length }}
-        </li>
+        <li class="text-center">Recensioni: {{ doctor.reviews.length }}</li>
       </ul>
     </div>
   </div>
@@ -72,7 +91,7 @@ export default {
   &:hover {
     transform: translateY(-6px);
     cursor: pointer;
-    transition: ease-in-out .20s;
+    transition: ease-in-out 0.2s;
   }
 
   .ms-profile {
@@ -103,8 +122,8 @@ export default {
     font-weight: bold;
     padding: 3px 7px;
     position: absolute;
-    top: 25px;
-    left: 18px;
+    top: 14px;
+    left: 14px;
   }
 
   .round {
@@ -126,7 +145,7 @@ export default {
       background-color: transparent;
       color: #03bfcb;
       border: 1px solid #03bfcb;
-      transition: ease .30s;
+      transition: ease 0.3s;
     }
   }
 
@@ -139,7 +158,6 @@ export default {
 }
 
 @media screen and (min-width: 992px) {
-
   .card-ctn {
     width: 340px;
   }
@@ -155,6 +173,5 @@ export default {
   .card-ctn {
     width: 330px;
   }
-    
 }
 </style>

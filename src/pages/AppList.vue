@@ -91,9 +91,9 @@ export default {
                 this.getDoctors();
                 store.showSuggestions = false;
             },
-            
+
         }
-        
+
     },
 };
 </script>
@@ -117,7 +117,7 @@ export default {
                         Filtri
                         <font-awesome-icon icon="fa-solid fa-filter" class="filter" />
                     </h5>
-                    <div class="ms-radio-ctn mb-4">
+                    <div class="ms-radio-ctn mb-2">
                         <h6 class="mb-2">Valutazioni:</h6>
                         <form>
                             <label v-for="n in 5">
@@ -127,7 +127,26 @@ export default {
                             </label>
                         </form>
                     </div>
-                    <div class="ms-radio-ctn mb-3">
+                    <!--bottoni per filtrare le reviews-->
+                    <div class="ms-radio-ctn mb-4">
+                        <h6 class="mb-2">Recensioni:</h6>
+                        <form>
+                            <label>
+                                    <input type="checkbox" name="no-review" value="no-review" v-model="hideNoReview"
+                                        @click="hideNoReview = !hideNoReview" />
+                                    <span>Nascondi senza recensioni</span>
+                                </label>
+                            <select v-model="reviewThreshold" class="ms-select">
+                                <option value="">Tutte</option>
+                                <option value="3">Sopra 3</option>
+                                <option value="10">Sopra 5</option>
+                                <option value="20">Sopra 10</option>
+                                <option value="50">Sopra 20</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="ms-radio-ctn mb-2">
+                        <h5 class="mb-3">Ordinamento <font-awesome-icon icon="fa-solid fa-arrow-up-wide-short"  class="fs-5"/></h5>
                         <h6 class="mb-2">Ordina le recensioni per chi ha:</h6>
                         <form>
                             <label>
@@ -140,25 +159,7 @@ export default {
                                     @click="reviewOrder = 'asc'" />
                                 <span>Meno Recensioni</span>
                             </label>
-                            <label>
-                                <input type="checkbox" name="no-review" value="no-review" v-model="hideNoReview"
-                                    @click="hideNoReview = !hideNoReview" />
-                                <span>Nascondi senza recensioni</span>
-                            </label>
-                        </form>
-                    </div>
-
-                    <!--bottoni per filtrare le reviews-->
-                    <div class="ms-radio-ctn mb-3">
-                        <h6 class="mb-2">Recensioni:</h6>
-                        <form>
-                            <select v-model="reviewThreshold" class="ms-select">
-                                <option value="">Tutte</option>
-                                <option value="3">Sopra 3</option>
-                                <option value="10">Sopra 5</option>
-                                <option value="20">Sopra 10</option>
-                                <option value="50">Sopra 20</option>
-                            </select>
+                
                         </form>
                     </div>
 
@@ -186,7 +187,7 @@ export default {
                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
-                            <div class="ms-radio-ctn mb-3">
+                            <div class="ms-radio-ctn mb-2">
                                 <h6 class="mb-2">Valutazioni:</h6>
                                 <form>
                                     <label v-for="n in 5">
@@ -197,7 +198,26 @@ export default {
                                     </label>
                                 </form>
                             </div>
+                            <!--bottoni per filtrare le reviews-->
+                            <div class="ms-radio-ctn mb-4">
+                                <h6 class="mb-2">Recensioni:</h6>
+                                <form>
+                                    <label>
+                                        <input type="checkbox" name="no-review" value="no-review" v-model="hideNoReview"
+                                            @click="hideNoReview = !hideNoReview" />
+                                        <span>Nascondi senza recensioni</span>
+                                    </label>
+                                    <select v-model="reviewThreshold" class="ms-select">
+                                        <option value="">Tutte</option>
+                                        <option value="3">Sopra 3</option>
+                                        <option value="10">Sopra 5</option>
+                                        <option value="20">Sopra 10</option>
+                                        <option value="50">Sopra 20</option>
+                                    </select>
+                                </form>
+                            </div>
                             <div class="ms-radio-ctn mb-3">
+                                <h5 class="mb-3">Ordinamento <font-awesome-icon icon="fa-solid fa-arrow-up-wide-short"  class="fs-5"/></h5>
                                 <h6 class="mb-2">Ordina le recensioni per chi ha:</h6>
                                 <form>
                                     <label>
@@ -209,26 +229,9 @@ export default {
                                         <input type="radio" name="radio" value="asc" v-model="reviewOrder"
                                             @click="reviewOrder = 'asc'" />
                                         <span>Meno Recensioni</span>
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="no-review" value="no-review" v-model="hideNoReview"
-                                            @click="hideNoReview = !hideNoReview" />
-                                        <span>Nascondi senza recensioni</span>
-                                    </label>
+                                    </label>               
                                 </form>
-                                <!--bottoni per filtrare le reviews-->
-                                <div class="ms-radio-ctn mb-3">
-                                    <h6 class="mb-2">Recensioni:</h6>
-                                    <form>
-                                        <select v-model="reviewThreshold" class="ms-select">
-                                            <option value="">Tutte</option>
-                                            <option value="3">Sopra 3</option>
-                                            <option value="10">Sopra 5</option>
-                                            <option value="20">Sopra 10</option>
-                                            <option value="50">Sopra 20</option>
-                                        </select>
-                                    </form>
-                                </div>
+
                             </div>
                             <button class="btn ms-btn-primary mb-3" @click="resetDatas">
                                 Reset
@@ -244,7 +247,7 @@ export default {
             <div class="main-content d-flex flex-column flex-md-row flex-wrap">
                 <div v-for="doctor in orderDoctorList" class="ms-card-ctn">
                     <AppCard :doctor="doctor" v-if="(votesAverage(doctor.votes) == ratingValue ||
-                        ratingValue == null) && checkDoctorReviews(doctor.reviews)"/>
+                        ratingValue == null) && checkDoctorReviews(doctor.reviews)" />
                 </div>
             </div>
             <!-- /AppCard -->

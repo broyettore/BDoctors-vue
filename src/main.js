@@ -17,9 +17,10 @@ import { faNotesMedical } from '@fortawesome/free-solid-svg-icons';
 import { faFilter as filter } from '@fortawesome/free-solid-svg-icons';
 import { faPlus as plus } from '@fortawesome/free-solid-svg-icons';
 import { faMinus as minus} from '@fortawesome/free-solid-svg-icons';
+import { faArrowUpWideShort as wideShort } from '@fortawesome/free-solid-svg-icons';
 
 /* add icons */
-library.add(House, faFacebook, faTwitter, faInstagram, faLinkedinIn, faNotesMedical, Star, filter, plus, minus)
+library.add(House, faFacebook, faTwitter, faInstagram, faLinkedinIn, faNotesMedical, Star, filter, plus, minus, wideShort)
 
 /* dropdown */
 //import "../node_modules/vue-simple-search-dropdown/dist/vue-simple-search-dropdown.js";
