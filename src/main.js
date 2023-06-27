@@ -21,5 +21,8 @@ import { faMinus as minus} from '@fortawesome/free-solid-svg-icons';
 /* add icons */
 library.add(House, faFacebook, faTwitter, faInstagram, faLinkedinIn, faNotesMedical, Star, filter, plus, minus)
 
+/* dropdown */
+//import "../node_modules/vue-simple-search-dropdown/dist/vue-simple-search-dropdown.js";
+//import "../node_modules/vue-simple-search-dropdown/dist/vue-simple-search-dropdown.min.js";
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(router).mount('#app')

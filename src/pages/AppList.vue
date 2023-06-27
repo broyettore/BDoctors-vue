@@ -1,5 +1,6 @@
 <script>
 import AppCard from "./AppCard.vue";
+import AppSearch from "../components/main/AppSearch.vue";
 import store from "../store";
 import axios from "axios";
 export default {
@@ -7,6 +8,7 @@ export default {
     name: "AppList",
     components: {
         AppCard,
+        AppSearch,
     },
 
     data() {
@@ -82,10 +84,22 @@ export default {
             }
         },
     },
+    watch: {
+        '$route': {
+            immediate: true,
+            handler() {
+                this.getDoctors();
+                store.showSuggestions = false;
+            },
+            
+        }
+        
+    },
 };
 </script>
 
 <template>
+    <AppSearch></AppSearch>
     <main id="app-list-main">
         <h1 class="text-center  py-4 fs-3">
             RISULTATI PER: {{ $route.params.search.toUpperCase() }} ({{
