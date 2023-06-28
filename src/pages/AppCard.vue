@@ -11,16 +11,16 @@ export default {
   },
   methods: {
 
-  getSponsoredDoctors() {
-    axios.get("http://127.0.0.1:8000/api/doctor/sponsored")
-  .then((response) => {
-                  this.sponsoredDoctors = response.data.results;
-                  console.log(this.sponsoredDoctors);
-              })
-              .catch((error) => {
-                  console.log(error);
-              });
-          }
+    getSponsoredDoctors() {
+      axios.get("http://127.0.0.1:8000/api/sponsored")
+        .then((response) => {
+          this.sponsoredDoctors = response.data.results;
+          console.log(this.sponsoredDoctors);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
   props: {
     doctor: Object,
@@ -44,33 +44,34 @@ export default {
 </script>
 
 <template>
-  <div class="card-ctn d-flex flex-column align-items-center">
-    <div v-for="sponsoredDoctor in sponsoredDoctors">
-      <span class="pro" v-if="sponsoredDoctor.user.id === doctor.id">SPONSOR</span>
-    </div>
-    <img v-if="doctor.photo != '' && doctor.photo != null" :src="this.store.testApi + doctor.photo" :alt="doctor.photo"
-      class="round ms-profile" />
-    <img v-else src="/avatar-medico-edited.jpg" class="round ms-profile" :alt="doctor.last_name + 'photo'" />
-    <h3>{{ doctor.user.first_name }} {{ doctor.user.last_name }}</h3>
-    <h5 class="fs-5">{{ doctor.address }}</h5>
-    <p class="fs-5">{{ doctor.services }}</p>
-    <h6>{{ doctor.phone_number }}</h6>
-    <div class="vote_review mt-auto d-flex flex-column align-items-center">
-      <div class="buttons mt-auto ">
-        <button class="primary my-2">Prenota</button>
+     <router-link :to="{ name: 'doctor', params: { id: doctor.id } }">
+    <div class="card-ctn d-flex flex-column align-items-center">
+      <div v-for="sponsoredDoctor in sponsoredDoctors">
+        <span class="pro" v-if="sponsoredDoctor.user.id === doctor.id">SPONSOR</span>
       </div>
-      <ul>
-        <li class="text-center " v-if="doctor.votes.length > 0">
-          Valutazione:
-          <font-awesome-icon v-for="n in votesAverage" icon="fa-solid fa-star" />
-        </li>
-        <li class="text-center" v-else="doctor.votes.length === 0">
-          Nessuna valutazione
-        </li>
-        <li class="text-center">Recensioni: {{ doctor.reviews.length }}</li>
-      </ul>
+      <img v-if="doctor.photo != '' && doctor.photo != null" :src="this.store.testApi + doctor.photo" :alt="doctor.photo"
+        class="round ms-profile" />
+      <img v-else src="/avatar-medico-edited.jpg" class="round ms-profile" :alt="doctor.last_name + 'photo'" />
+      <h3>{{ doctor.user.first_name }} {{ doctor.user.last_name }}</h3>
+      <h5 class="fs-5">{{ doctor.address }}</h5>
+      <p class="fs-5 my-2" v-for="specialisation in doctor.specialisations">{{ specialisation.name }}</p>
+      <h6 class="my-2">{{ doctor.phone_number }}</h6>
+      <div class="vote_review mt-auto d-flex flex-column align-items-center">
+        <div class="buttons mt-auto ">
+        </div>
+        <ul>
+          <li class="text-center " v-if="doctor.votes.length > 0">
+            Valutazione:
+            <font-awesome-icon v-for="n in votesAverage" icon="fa-solid fa-star" />
+          </li>
+          <li class="text-center" v-else="doctor.votes.length === 0">
+            Nessuna valutazione
+          </li>
+          <li class="text-center">Recensioni: {{ doctor.reviews.length }}</li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <style scoped lang="scss">
@@ -84,7 +85,7 @@ export default {
   padding-top: 30px;
   position: relative;
   width: 350px;
-  height: 550px;
+  height: 450px;
   max-width: 100%;
   text-align: center;
 

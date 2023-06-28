@@ -19,7 +19,7 @@ export default {
     methods: {
 
         getSponsoredDoctors() {
-            axios.get("http://127.0.0.1:8000/api/doctor/sponsored")
+            axios.get("http://127.0.0.1:8000/api/sponsored")
                 .then((response) => {
                     this.sponsoredDoctors = response.data.results;
                     console.log(this.sponsoredDoctors);
@@ -44,11 +44,12 @@ export default {
             <AppSearch></AppSearch>
         </div>
     </section>
-    <section id="sponsored" class="d-flex flex-column justify-content-center align-items-center" v-if="sponsoredDoctors.length > 0">
+    <section id="sponsored" class="d-flex flex-column justify-content-center align-items-center"
+        v-if="sponsoredDoctors.length > 0">
         <h2 class="mb-4 fs-2">Medici In Evidenza</h2>
         <div class="card-sponsored d-flex justify-content-center flex-wrap gap-5">
             <div v-for="sponsoredDoctor in sponsoredDoctors.slice(0, 3)">
-                <AppCard :doctor="sponsoredDoctor" class="h-100" />
+                    <AppCard :doctor="sponsoredDoctor" class="h-100" />
             </div>
         </div>
     </section>

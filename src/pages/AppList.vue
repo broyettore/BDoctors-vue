@@ -33,16 +33,6 @@ export default {
                     console.log(error);
                 });
         },
-        votesAverage(votes) {
-            let sum = 0;
-
-            for (let i = 0; i < votes.length; i++) {
-                sum += votes[i].value;
-            }
-            const avg = sum / votes.length;
-
-            return Math.floor(avg);
-        },
         resetDatas() {
             this.ratingValue = null;
             this.reviewOrder = null;
@@ -249,8 +239,8 @@ export default {
             <!-- AppCard -->
             <div class="main-content d-flex flex-column flex-md-row flex-wrap">
                 <div v-for="doctor in orderDoctorList" class="ms-card-ctn">
-                    <AppCard :doctor="doctor" v-if="(votesAverage(doctor.votes) == ratingValue ||
-                        ratingValue == null) && checkDoctorReviews(doctor.reviews)" />
+                        <AppCard :doctor="doctor" v-if="(this.store.votesAverage(doctor.votes) == ratingValue ||
+                            ratingValue == null) && checkDoctorReviews(doctor.reviews)" />
                 </div>
             </div>
             <!-- /AppCard -->
