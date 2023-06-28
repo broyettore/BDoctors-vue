@@ -62,17 +62,16 @@ export default {
                     doctor_id: this.singleDoctor.id
                 }
             }
-            // const review = JSON.stringify(data);
 
             axios.post("http://127.0.0.1:8000/api/review/create", data)
                 .then((response) => {
                     console.log(response);
 
-                    if (response.status === 201) {
+                    if (response.status === 201 || response.status === 200 ) {
                         this.reviewForm.first_name = "";
                         this.reviewForm.last_name = "";
                         this.reviewForm.email = "";
-                        this.reviewForm.review = "";
+                        this.reviewForm.description = "";
                         this.reviewForm.vote = "";
                     }
                 })
