@@ -44,79 +44,74 @@ export default {
             const reviewdate = new Date(date);
             return reviewdate.toLocaleDateString();
         },
-    },
-    sendReview() {
-        console.log(this.reviewForm.first_name);
-        console.log(this.reviewForm.last_name);
-        console.log(this.reviewForm.email);
-        console.log(this.reviewForm.review);
-        console.log(this.reviewForm.vote);
-        console.log(this.singleDoctor.id);
+        sendReview() {
+            console.log(this.reviewForm.first_name);
+            console.log(this.reviewForm.last_name);
+            console.log(this.reviewForm.email);
+            console.log(this.reviewForm.description);
+            console.log(this.reviewForm.vote);
+            console.log(this.singleDoctor.id);
 
-        const reviewdata = {
-            first_name: this.reviewForm.first_name,
-            last_name: this.reviewForm.last_name,
-            email: this.reviewForm.email,
-            content: this.reviewForm.review,
-            doctor_id: this.singleDoctor.id
-        }
-
-        const votedata = {
-            vote: this.reviewForm.vote,
-            doctor_id: this.singleDoctor.id
-        }
-
-        const promise1 = axios.post(`${store.apiBaseUrl}/leads`, reviewdata);
-        const promise2 = axios.post(`${store.apiBaseUrl}/leads`, votedata);
-        Promise.all([promise1, promise2])
-            .then((response) => {
-                console.log(response);
-
-                if (response.status === 201) {
-                    this.project.leads.push(response.data);
-                    this.reviewForm.first_name = "";
-                    this.reviewForm.last_name = "";
-                    this.reviewForm.email = "";
-                    this.reviewForm.review = "";
-                    this.reviewForm.vote = "";
+            const data = {
+                review: {
+                    first_name: this.reviewForm.first_name,
+                    last_name: this.reviewForm.last_name,
+                    email: this.reviewForm.email,
+                    description: this.reviewForm.description,
+                    vote: this.reviewForm.vote,
+                    doctor_id: this.singleDoctor.id
                 }
-            })
-            .catch((error) => {
-                console.log(error);
-            })
+            }
+            // const review = JSON.stringify(data);
+
+            axios.post("http://127.0.0.1:8000/api/review/create", data)
+                .then((response) => {
+                    console.log(response);
+
+                    if (response.status === 201) {
+                        this.reviewForm.first_name = "";
+                        this.reviewForm.last_name = "";
+                        this.reviewForm.email = "";
+                        this.reviewForm.review = "";
+                        this.reviewForm.vote = "";
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        },
+        sendMsg() {
+            console.log(this.msgForm.first_name);
+            console.log(this.msgForm.last_name);
+            console.log(this.msgForm.email);
+            console.log(this.msgForm.body);
+            console.log(this.singleDoctor.id);
+
+            const data = {
+                first_name: this.msgForm.first_name,
+                last_name: this.msgForm.last_name,
+                email: this.msgForm.email,
+                content: this.msgForm.body,
+                doctor_id: this.singleDoctor.id
+            }
+
+            axios.post(`${store.apiBaseUrl}/leads`, data)
+                .then((response) => {
+                    console.log(response);
+
+                    if (response.status === 201) {
+                        this.project.leads.push(response.data);
+                        this.msgForm.first_name = "";
+                        this.msgForm.last_name = "";
+                        this.msgForm.email = "";
+                        this.msgForm.body = "";
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        },
     },
-    sendMsg() {
-        console.log(this.msgForm.first_name);
-        console.log(this.msgForm.last_name);
-        console.log(this.msgForm.email);
-        console.log(this.msgForm.body);
-        console.log(this.singleDoctor.id);
-
-        const data = {
-            first_name: this.msgForm.first_name,
-            last_name: this.msgForm.last_name,
-            email: this.msgForm.email,
-            content: this.msgForm.body,
-            doctor_id: this.singleDoctor.id
-        }
-
-        axios.post(`${store.apiBaseUrl}/leads`, data)
-            .then((response) => {
-                console.log(response);
-
-                if (response.status === 201) {
-                    this.project.leads.push(response.data);
-                    this.msgForm.first_name = "";
-                    this.msgForm.last_name = "";
-                    this.msgForm.email = "";
-                    this.msgForm.body = "";
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-    },
-
     created() {
         this.getDoctor();
     }
@@ -127,7 +122,8 @@ export default {
     <section id="detailed-page" v-if="this.singleDoctor">
         <div class="container py-5">
             <!-- Doctor info and Photo  -->
-            <div class="main-ctn ms-bg-repeat d-flex flex-column flex-sm-row  justify-content-between align-items-start mb-5">
+            <div
+                class="main-ctn ms-bg-repeat d-flex flex-column flex-sm-row  justify-content-between align-items-start mb-5">
                 <div class="left">
                     <ul>
                         <li class="fs-1">
@@ -207,7 +203,7 @@ export default {
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample1">
                             <div class="accordion-body">
-                                <form @submit.prevent="sendReview">
+                                <form @submit.prevent="sendReview()">
                                     <div class="mb-3">
                                         <label for="first_name" class="form-label">Nome</label>
                                         <input type="text" class="form-control" id="first_name"
@@ -231,7 +227,7 @@ export default {
                                         <label for="vote" class="form-label">Valutazione</label>
                                         <select class="form-select" aria-label="Default select example" id="vote"
                                             v-model="reviewForm.vote">
-                                            <option :value="reviewForm.vote" selected>Scegli una valutazione</option>
+                                            <option value="0" selected>Scegli una valutazione</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -335,7 +331,7 @@ export default {
 
             .img-ctn {
                 align-self: center;
-                
+
                 img {
                     width: 250px;
                     border: 1px solid $header-text;
@@ -352,7 +348,7 @@ export default {
 
 }
 
-@media screen and  (min-width: 768px) {
+@media screen and (min-width: 768px) {
     .ms-accordion {
         width: 50%;
         margin-right: 20px;
@@ -363,5 +359,4 @@ export default {
 // @media screen and (min-width: 992px) {
 //     //
 // }
-
 </style>
