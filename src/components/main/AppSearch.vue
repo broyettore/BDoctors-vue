@@ -118,6 +118,7 @@ export default {
         selectResult(result) {
             this.store.query = result;
             this.goToDoctorsList();
+            this.store.showSuggestions = false; // Nasconde i suggerimenti dopo aver selezionato un risultato
         },
     },
     created() {
