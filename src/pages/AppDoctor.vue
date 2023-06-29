@@ -179,8 +179,8 @@ export default {
                     <h3>Valutazioni</h3>
                     <hr>
                     <ul>
-                        <li v-for="n in stars.reverse()" class="my-2">
-                            ({{ getVotes(singleDoctor.votes, n) }}) <font-awesome-icon v-for="n in n"
+                        <li v-for="n in stars.slice().reverse()" class="my-2">
+                            ({{ getVotes(singleDoctor.votes, n) }}) <font-awesome-icon v-for="y in n"
                                 icon="fa-solid fa-star" />
                             <hr>
                         </li>
