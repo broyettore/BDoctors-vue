@@ -27,6 +27,7 @@ export default {
             axios.get(`http://127.0.0.1:8000/api/doctor/${this.$route.params.id}`)
                 .then((response) => {
                     this.singleDoctor = response.data.result[0];
+                    this.sortReviews();
                     console.log(this.singleDoctor);
                 })
                 .catch((error) => {
@@ -42,6 +43,11 @@ export default {
         reviewDate(date) {
             const reviewdate = new Date(date);
             return reviewdate.toLocaleDateString();
+        },
+        sortReviews() {
+            this.singleDoctor.reviews.sort((a, b) => {
+                return new Date(b.created_at) - new Date(a.created_at);
+            });
         },
         sendReview() {
             console.log(this.reviewForm.first_name);
@@ -164,7 +170,7 @@ export default {
                     <ul>
                         <li v-for="review in singleDoctor.reviews" class="my-2">
                             <h4 class="fs-5 mb-2">{{ review.first_name }} {{ review.last_name }} <span>({{ review.email
-                            }}),</span> <small>{{ reviewDate(review.created_at) }}</small></h4>
+                            }}),</span> <small>{{reviewDate(review.created_at) }}</small></h4>
                             <p>{{ review.description }}</p>
                             <hr>
                         </li>
