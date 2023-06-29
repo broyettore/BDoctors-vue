@@ -42,7 +42,7 @@ export default {
         },
         reviewDate(date) {
             const reviewdate = new Date(date);
-            return reviewdate.toLocaleDateString();
+            return reviewdate.toLocaleString();
         },
         sortReviews() {
             this.singleDoctor.reviews.sort((a, b) => {
