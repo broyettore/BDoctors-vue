@@ -16,10 +16,9 @@ export default {
                 vote: 0,
             },
             msgForm: {
-                first_name: "",
-                last_name: "",
+                user: "",
                 email: "",
-                body: ""
+                message: ""
             },
         }
     },
@@ -80,30 +79,25 @@ export default {
                 })
         },
         sendMsg() {
-            console.log(this.msgForm.first_name);
-            console.log(this.msgForm.last_name);
+            console.log(this.msgForm.user);
             console.log(this.msgForm.email);
-            console.log(this.msgForm.body);
+            console.log(this.msgForm.message);
             console.log(this.singleDoctor.id);
 
             const data = {
-                first_name: this.msgForm.first_name,
-                last_name: this.msgForm.last_name,
+                user: this.msgForm.user,
                 email: this.msgForm.email,
-                content: this.msgForm.body,
-                doctor_id: this.singleDoctor.id
+                message: this.msgForm.message,
             }
 
-            axios.post(`${store.apiBaseUrl}/leads`, data)
+            axios.post("http://127.0.0.1:8000/api/doctor/contact", data)
                 .then((response) => {
                     console.log(response);
 
-                    if (response.status === 201) {
-                        this.project.leads.push(response.data);
-                        this.msgForm.first_name = "";
-                        this.msgForm.last_name = "";
+                    if (response.status === 201 || response.status === 200) {
+                        this.msgForm.user = "";
                         this.msgForm.email = "";
-                        this.msgForm.body = "";
+                        this.msgForm.message = "";
                     }
                 })
                 .catch((error) => {
@@ -254,22 +248,17 @@ export default {
                             <div class="accordion-body">
                                 <form @submit.prevent="sendMsg">
                                     <div class="mb-3">
-                                        <label for="first_name" class="form-label">Nome</label>
-                                        <input type="text" class="form-control" id="first_name"
-                                            v-model="reviewForm.first_name">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="last_name" class="form-label">Cognome</label>
-                                        <input type="text" class="form-control" id="last_name"
-                                            v-model="reviewForm.last_name">
+                                        <label for="user" class="form-label">Nome e Cognome</label>
+                                        <input type="text" class="form-control" id="user"
+                                            v-model="msgForm.user">
                                     </div>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
                                         <input type="email" class="form-control" id="email" v-model="msgForm.email">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="body" class="form-label">Messaggio</label>
-                                        <textarea class="form-control" id="body" rows="3" v-model="msgForm.body"></textarea>
+                                        <label for="message" class="form-label">Messaggio</label>
+                                        <textarea class="form-control" id="message" rows="3" v-model="msgForm.message"></textarea>
                                     </div>
                                     <button class="btn btn-primary">Invia</button>
                                 </form>
