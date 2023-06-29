@@ -5,17 +5,3 @@
 @use './_partials/hover.scss';
 @import "../../../node_modules/bootstrap/scss/bootstrap.scss";
 
-section {
-    animation: headerFadein 1.2s linear forwards;
-
-
-    @keyframes headerFadein {
-        0% {
-            opacity: 0;
-        }
-
-        100% {
-            opacity: 1;
-        }
-    }
-}
