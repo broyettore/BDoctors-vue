@@ -72,7 +72,7 @@ export default {
                 .then((response) => {
                     console.log(response);
 
-                    if (response.status === 201 || response.status === 200 ) {
+                    if (response.status === 201 || response.status === 200) {
                         this.reviewForm.first_name = "";
                         this.reviewForm.last_name = "";
                         this.reviewForm.email = "";
@@ -121,8 +121,7 @@ export default {
     <section id="detailed-page" v-if="this.singleDoctor">
         <div class="container py-5">
             <!-- Doctor info and Photo  -->
-            <div
-                class="main-ctn ms-bg-repeat d-flex flex-column flex-sm-row  justify-content-between align-items-start mb-5">
+            <div class="main-ctn  d-flex flex-column flex-sm-row  justify-content-between align-items-start mb-5">
                 <div class="left">
                     <ul>
                         <li class="fs-1">
@@ -164,19 +163,19 @@ export default {
 
             <!-- Review and votes  -->
             <div class="review-list  row mb-5 d-flex justify-content-between">
-                <div class="left  ms-bg-repeat col-12  col-lg-7  mb-5">
+                <div class="left   col-12  col-lg-7  mb-5">
                     <h3>Recensioni</h3>
                     <hr>
-                    <ul>
+                    <ul class="scroll-review">
                         <li v-for="review in singleDoctor.reviews" class="my-2">
                             <h4 class="fs-5 mb-2">{{ review.first_name }} {{ review.last_name }} <span>({{ review.email
-                            }}),</span> <small>{{reviewDate(review.created_at) }}</small></h4>
+                            }}),</span> <small>{{ reviewDate(review.created_at) }}</small></h4>
                             <p>{{ review.description }}</p>
                             <hr>
                         </li>
                     </ul>
                 </div>
-                <div class="right ms-bg-repeat col-12 col-lg-4">
+                <div class="right  col-12 col-lg-4">
                     <h3>Valutazioni</h3>
                     <hr>
                     <ul>
@@ -193,7 +192,7 @@ export default {
             <div class="drop-msg-review d-flex flex-column flex-md-row">
                 <!-- Form to drop review and vote  -->
                 <div class="accordion ms-accordion" id="accordionExample1">
-                    <div class="accordion-item ms-bg-repeat">
+                    <div class="accordion-item ">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -243,7 +242,7 @@ export default {
                 <!-- /Form to drop review and vote  -->
                 <!-- Form doctor a message -->
                 <div class="accordion ms-accordion" id="accordionExample2">
-                    <div class="accordion-item ms-bg-repeat">
+                    <div class="accordion-item ">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
@@ -255,8 +254,7 @@ export default {
                                 <form @submit.prevent="sendMsg">
                                     <div class="mb-3">
                                         <label for="user" class="form-label">Nome e Cognome</label>
-                                        <input type="text" class="form-control" id="user"
-                                            v-model="msgForm.user">
+                                        <input type="text" class="form-control" id="user" v-model="msgForm.user">
                                     </div>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
@@ -264,7 +262,8 @@ export default {
                                     </div>
                                     <div class="mb-3">
                                         <label for="message" class="form-label">Messaggio</label>
-                                        <textarea class="form-control" id="message" rows="3" v-model="msgForm.message"></textarea>
+                                        <textarea class="form-control" id="message" rows="3"
+                                            v-model="msgForm.message"></textarea>
                                     </div>
                                     <button class="btn btn-primary">Invia</button>
                                 </form>
@@ -283,18 +282,25 @@ export default {
 
 #detailed-page {
     min-height: calc(100vh - 96px);
+    animation: headerFadein 1.2s linear forwards;
 
-    .ms-bg-repeat {
-        background-color: darken($color: lightblue, $amount: 20%);
-        color: black;
-        border-radius: 20px;
-        padding: 20px;
+
+    @keyframes headerFadein {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
     }
 
     .review-list {
         .left {
-            max-height: 400px;
-            overflow-y: scroll;
+            .scroll-review {
+                overflow-y: scroll;
+                max-height: 400px;
+            }
         }
 
         .right {
@@ -303,19 +309,6 @@ export default {
     }
 
     .main-ctn {
-        animation: headerFadein 1.2s linear forwards;
-
-
-        @keyframes headerFadein {
-            0% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
         .left {
             margin-bottom: 30px;
 
@@ -327,7 +320,7 @@ export default {
                 }
 
                 a {
-                    color: $header-text;
+                    color: $main-background;
                 }
             }
         }
