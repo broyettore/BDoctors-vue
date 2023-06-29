@@ -74,6 +74,22 @@ export default {
                 );
             }
         },
+        filteredDoctorList() {
+            // Apply filter based on ratingValue and hideNoReview
+            let filteredList = this.orderDoctorList;
+            if (this.ratingValue) {
+                filteredList = filteredList.filter(doctor => this.store.votesAverage(doctor.votes) === this.ratingValue);
+            }
+            if (this.hideNoReview) {
+                filteredList = filteredList.filter(doctor => doctor.reviews.length > 0);
+            }
+
+            if (this.reviewThreshold) {
+                filteredList = filteredList.filter(doctor => doctor.reviews.length >= this.reviewThreshold);
+            }
+
+            return filteredList;
+        },
     },
     watch: {
         '$route': {
@@ -236,9 +252,10 @@ export default {
 
             <!-- AppCard -->
             <div class="main-content d-flex flex-column flex-md-row flex-wrap">
-                <div v-for="doctor in orderDoctorList" class="ms-card-ctn" >
-                        <AppCard :doctor="doctor" v-if="(this.store.votesAverage(doctor.votes) == ratingValue ||
-                            ratingValue == null) && checkDoctorReviews(doctor.reviews)" />
+                <div v-for="doctor in orderDoctorList" class="ms-card-ctn"
+                    :style="{ display: filteredDoctorList.includes(doctor) ? '' : 'none' }">
+                    <AppCard :doctor="doctor" v-if="(this.store.votesAverage(doctor.votes) == ratingValue ||
+                        ratingValue == null) && checkDoctorReviews(doctor.reviews)" />
                 </div>
             </div>
             <!-- /AppCard -->
@@ -280,7 +297,7 @@ export default {
             .ms-card-ctn {
                 margin: 8px;
                 width: 350px;
-                height: 450px;
+                height: 470px;
             }
         }
 
