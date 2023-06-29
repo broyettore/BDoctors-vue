@@ -163,8 +163,8 @@ export default {
             <!-- /Doctor info and Photo  -->
 
             <!-- Review and votes  -->
-            <div class="review-list ms-bg-repeat row mb-5">
-                <div class="left col-12  col-lg-8 mb-5">
+            <div class="review-list  row mb-5 d-flex justify-content-between">
+                <div class="left  ms-bg-repeat col-12  col-lg-7  mb-5">
                     <h3>Recensioni</h3>
                     <hr>
                     <ul>
@@ -176,7 +176,7 @@ export default {
                         </li>
                     </ul>
                 </div>
-                <div class="right col-12 col-lg-4">
+                <div class="right ms-bg-repeat col-12 col-lg-4">
                     <h3>Valutazioni</h3>
                     <hr>
                     <ul>
@@ -190,10 +190,10 @@ export default {
             </div>
             <!-- /Review and votes  -->
 
-            <div class="drop-msg-review ms-bg-repeat d-flex flex-column flex-md-row">
+            <div class="drop-msg-review d-flex flex-column flex-md-row">
                 <!-- Form to drop review and vote  -->
                 <div class="accordion ms-accordion" id="accordionExample1">
-                    <div class="accordion-item">
+                    <div class="accordion-item ms-bg-repeat">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -243,7 +243,7 @@ export default {
                 <!-- /Form to drop review and vote  -->
                 <!-- Form doctor a message -->
                 <div class="accordion ms-accordion" id="accordionExample2">
-                    <div class="accordion-item">
+                    <div class="accordion-item ms-bg-repeat">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
@@ -284,17 +284,21 @@ export default {
 #detailed-page {
     min-height: calc(100vh - 96px);
 
-    // .ms-bg-repeat {
-    //     background-color: darken($color: #3b66a7, $amount: 10%);
-    //     color: $header-text;
-    //     border-radius: 20px;
-    //     padding: 20px;
-    // }
+    .ms-bg-repeat {
+        background-color: darken($color: lightblue, $amount: 20%);
+        color: black;
+        border-radius: 20px;
+        padding: 20px;
+    }
 
     .review-list {
         .left {
             max-height: 400px;
             overflow-y: scroll;
+        }
+
+        .right {
+            max-height: 400px;
         }
     }
 
@@ -323,7 +327,7 @@ export default {
                 }
 
                 a {
-                    color: $main-background;
+                    color: $header-text;
                 }
             }
         }
