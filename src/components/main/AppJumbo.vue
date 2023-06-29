@@ -48,7 +48,7 @@ export default {
         v-if="sponsoredDoctors.length > 0">
         <h2 class="mb-4 fs-2">Medici In Evidenza</h2>
         <div class="card-sponsored d-flex justify-content-center flex-wrap gap-5">
-            <div v-for="sponsoredDoctor in sponsoredDoctors.slice(0, 3)">
+            <div v-for="sponsoredDoctor in sponsoredDoctors.slice(0, 3)" class="card-ctn">
                     <AppCard :doctor="sponsoredDoctor" class="h-100" />
             </div>
         </div>
@@ -57,6 +57,10 @@ export default {
 
 <style lang="scss" scoped>
 @use "../../assets/styles/_partials/variables.scss" as *;
+
+.card-ctn {
+    width: 350px;
+}
 
 
 #sponsored {

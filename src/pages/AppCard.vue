@@ -53,7 +53,7 @@ export default {
         class="round ms-profile" />
       <img v-else src="/avatar-medico-edited.jpg" class="round ms-profile" :alt="doctor.last_name + 'photo'" />
       <h3>{{ doctor.user.first_name }} {{ doctor.user.last_name }}</h3>
-      <h5 class="fs-5">{{ doctor.address }}</h5>
+      <h5 class="fs-5 mb-2">{{ doctor.address }}</h5>
       <p class="fs-5 my-2" v-for="specialisation in doctor.specialisations">{{ specialisation.name }}</p>
       <h6 class="my-2">{{ doctor.phone_number }}</h6>
       <div class="vote_review mt-auto d-flex flex-column align-items-center">
@@ -84,8 +84,8 @@ export default {
   color: #b3b8cd;
   padding-top: 30px;
   position: relative;
-  width: 350px;
-  height: 450px;
+  width: 100%;
+  height: 100%;
   max-width: 100%;
   text-align: center;
 
@@ -159,21 +159,4 @@ export default {
   }
 }
 
-@media screen and (min-width: 992px) {
-  .card-ctn {
-    width: 340px;
-  }
-}
-
-@media screen and (min-width: 1200px) and (max-width: 1400px) {
-  .card-ctn {
-    width: 354px;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .card-ctn {
-    width: 330px;
-  }
-}
 </style>

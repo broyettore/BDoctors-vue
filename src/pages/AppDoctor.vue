@@ -285,6 +285,13 @@ export default {
     //     padding: 20px;
     // }
 
+    .review-list {
+        .left {
+            max-height: 400px;
+            overflow-y: scroll;
+        }
+    }
+
     .main-ctn {
         animation: headerFadein 1.2s linear forwards;
 

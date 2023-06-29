@@ -129,10 +129,9 @@ export default {
                             </label>
                             <select v-model="reviewThreshold" class="ms-select">
                                 <option value="0" selected>Tutte</option>
-                                <option value="3">Sopra 3</option>
-                                <option value="10">Sopra 5</option>
-                                <option value="20">Sopra 10</option>
-                                <option value="50">Sopra 20</option>
+                                <option value="5">Sopra 5</option>
+                                <option value="10">Sopra 10</option>
+                                <option value="20">Sopra 20</option>
                             </select>
                         </form>
                     </div>
@@ -202,10 +201,9 @@ export default {
                                 </form>
                                 <select v-model="reviewThreshold" class="ms-select">
                                     <option value="0" selected>Tutte</option>
-                                    <option value="3">Sopra 3</option>
-                                    <option value="10">Sopra 5</option>
-                                    <option value="20">Sopra 10</option>
-                                    <option value="50">Sopra 20</option>
+                                    <option value="5">Sopra 5</option>
+                                    <option value="10">Sopra 10</option>
+                                    <option value="20">Sopra 20</option>
                                 </select>
                             </div>
                             <div class="ms-radio-ctn mb-3">
@@ -238,7 +236,7 @@ export default {
 
             <!-- AppCard -->
             <div class="main-content d-flex flex-column flex-md-row flex-wrap">
-                <div v-for="doctor in orderDoctorList" class="ms-card-ctn">
+                <div v-for="doctor in orderDoctorList" class="ms-card-ctn" >
                         <AppCard :doctor="doctor" v-if="(this.store.votesAverage(doctor.votes) == ratingValue ||
                             ratingValue == null) && checkDoctorReviews(doctor.reviews)" />
                 </div>
@@ -281,6 +279,8 @@ export default {
 
             .ms-card-ctn {
                 margin: 8px;
+                width: 350px;
+                height: 450px;
             }
         }
 
@@ -361,6 +361,10 @@ export default {
             .main-content {
                 border-left: 1px solid $main-background;
                 padding-left: 20px;
+
+                .ms-card-ctn {
+                    width: 340px;
+                }
             }
         }
     }
@@ -373,6 +377,10 @@ export default {
                 border-left: 1px solid $main-background;
                 padding-left: 20px;
                 width: 80%;
+
+                .ms-card-ctn {
+                    width: 340px;
+                }
             }
 
             .side-bar {
@@ -383,6 +391,18 @@ export default {
     }
 }
 
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+    #app-list-main {
+        .ms-ctn {
+            .main-content {
+                .ms-card-ctn {
+                    width: 340px;
+                }
+            }
+        }
+    }
+}
+
 @media screen and (min-width: 1400px) {
     #app-list-main {
         .ms-ctn {
@@ -390,6 +410,10 @@ export default {
                 border-left: 1px solid $main-background;
                 padding-left: 20px;
                 width: 82%;
+
+                .ms-card-ctn {
+                    width: 330px;
+                }
             }
 
             .side-bar {
