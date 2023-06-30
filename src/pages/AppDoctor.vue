@@ -20,6 +20,8 @@ export default {
                 email: "",
                 message: ""
             },
+            sentReview: false,
+            sentEmail: false
         }
     },
     methods: {
@@ -78,6 +80,10 @@ export default {
                         this.reviewForm.email = "";
                         this.reviewForm.description = "";
                         this.reviewForm.vote = "";
+                        this.sentReview = true;
+                        setTimeout(() => {
+                            this.sentReview = false;
+                        }, 3000);
                     }
                 })
                 .catch((error) => {
@@ -104,6 +110,10 @@ export default {
                         this.msgForm.user = "";
                         this.msgForm.email = "";
                         this.msgForm.message = "";
+                        this.sentEmail = true;
+                        setTimeout(() => {
+                            this.sentEmail = false;
+                        }, 3000);
                     }
                 })
                 .catch((error) => {
@@ -234,6 +244,12 @@ export default {
                                         </select>
                                     </div>
                                     <button class="btn btn-primary">Invia</button>
+                                    <transition name="fade">
+                                        <div v-if="sentReview" class="alert alert-success mt-3"
+                                            :class="{ 'hidden': !sentReview }">
+                                            Recensione inviata con successo!
+                                        </div>
+                                    </transition>
                                 </form>
                             </div>
                         </div>
@@ -266,6 +282,12 @@ export default {
                                             v-model="msgForm.message"></textarea>
                                     </div>
                                     <button class="btn btn-primary">Invia</button>
+                                    <transition name="fade">
+                                        <div v-if="sentEmail" class="alert alert-success mt-3"
+                                            :class="{ 'hidden': !sentEmail }">
+                                            Email inviata con successo!
+                                        </div>
+                                    </transition>
                                 </form>
                             </div>
                         </div>
@@ -344,6 +366,20 @@ export default {
         margin-bottom: 20px;
     }
 
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.hidden {
+  display: none;
 }
 
 @media screen and (min-width: 768px) {
