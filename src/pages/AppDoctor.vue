@@ -334,7 +334,8 @@ export default {
                 img {
                     width: 250px;
                     border: 1px solid $header-text;
-                    border-radius: 50%;
+                    // border-radius: 50%;
+                
                 }
             }
         }

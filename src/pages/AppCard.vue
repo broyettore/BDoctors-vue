@@ -100,6 +100,10 @@ export default {
     width: 150px;
   }
 
+  img {
+    object-fit: cover;
+  }
+
   h3 {
     margin: 10px 0;
   }
