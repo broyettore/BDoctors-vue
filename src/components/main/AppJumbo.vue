@@ -39,7 +39,7 @@ export default {
     <section id="jumbo">
         <div class="container">
             <div class="d-flex justify-content-center text-center mb-5">
-                <h1>NON È MAI STATO COSÌ SEMPLICE CHIAMARE UN DOTTORE</h1>
+                <h1>NON È MAI STATO COSÌ SEMPLICE PRENOTARE UNA VISITA MEDICA</h1>
             </div>
             <AppSearch></AppSearch>
         </div>
