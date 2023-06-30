@@ -117,9 +117,9 @@ export default {
 
         <div class="container ms-ctn d-flex flex-column flex-md-row py-1">
             <!-- side bar  -->
-            <div class="side-bar pe-4 mb-2">
+            <div class="side-bar pe-4  mb-2">
                 <!-- versione tablet +  -->
-                <div class="d-none d-md-block">
+                <div class="d-none d-md-block ms-stick pt-2">
                     <h5 class="mb-4">
                         Filtri
                         <font-awesome-icon icon="fa-solid fa-filter" class="filter" />
@@ -268,6 +268,11 @@ export default {
 
 #app-list-main {
     min-height: calc(100vh - 96px);
+
+    .ms-stick {
+        position: sticky;
+        top: 0;
+    }
 
     h1 {
         color: $main-background;

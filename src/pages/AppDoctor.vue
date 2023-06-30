@@ -21,20 +21,26 @@ export default {
                 message: ""
             },
             sentReview: false,
-            sentEmail: false
+            sentEmail: false,
+            isLoading: true
         }
     },
     methods: {
         getDoctor() {
-            axios.get(`http://127.0.0.1:8000/api/doctor/${this.$route.params.id}`)
-                .then((response) => {
-                    this.singleDoctor = response.data.result[0];
-                    this.sortReviews();
-                    console.log(this.singleDoctor);
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
+            return new Promise((resolve, reject) => {
+                axios
+                    .get(`http://127.0.0.1:8000/api/doctor/${this.$route.params.id}`)
+                    .then((response) => {
+                        this.singleDoctor = response.data.result[0];
+                        this.sortReviews();
+                        console.log(this.singleDoctor);
+                        resolve(); // Resolve the promise when the data is successfully fetched
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                        reject(error); // Reject the promise if an error occurs
+                    });
+            });
         },
         getVotes(votes, n) {
 
@@ -123,14 +129,27 @@ export default {
         },
     },
     created() {
-        this.getDoctor();
+        setTimeout(() => {
+            this.getDoctor()
+                .then(() => {
+                    this.isLoading = false; // Set isLoading to false when the data is loaded
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }, 2000);
     }
 }
 </script>
 
 <template>
-    <section id="detailed-page" v-if="this.singleDoctor">
-        <div class="container py-5">
+    <section id="detailed-page" class="d-flex flex-column justify-content-center align-items-center">
+        <div class="loader" v-if="isLoading">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="container py-5" v-else>
             <!-- Doctor info and Photo  -->
             <div class="main-ctn  d-flex flex-column flex-sm-row  justify-content-between align-items-start mb-5">
                 <div class="left">
@@ -307,16 +326,85 @@ export default {
     min-height: calc(100vh - 96px);
     animation: headerFadein 1.2s linear forwards;
 
+    .loader {
+        width: 16em;
+        height: 8em;
+        position: relative;
+        overflow: hidden;
 
-    @keyframes headerFadein {
-        0% {
-            opacity: 0;
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
         }
 
-        100% {
-            opacity: 1;
+        &::before {
+            width: inherit;
+            height: 0.2em;
+            background-color: $main-background;
+        }
+
+        &::after {
+            box-sizing: border-box;
+            width: 50%;
+            height: inherit;
+            border: 0.2em solid $main-background;
+            border-radius: 50%;
+            left: 25%;
+        }
+
+        & span {
+            position: absolute;
+            width: 5%;
+            height: 10%;
+            background-color: black;
+            border-radius: 50%;
+            bottom: 0.2em;
+            left: -5%;
+            animation: 2s linear infinite;
+            transform-origin: 50% -3em;
+            animation-name: run, rotating;
+        }
+
+        & span:nth-child(2) {
+            animation-delay: 0.075s;
+        }
+
+        & span:nth-child(3) {
+            animation-delay: 0.15s;
+        }
+
+        @keyframes run {
+            0% {
+                left: -5%;
+            }
+
+            10%,
+            60% {
+                left: calc((100% - 5%) / 2);
+            }
+
+            70%,
+            100% {
+                left: 100%;
+            }
+        }
+
+        @keyframes rotating {
+
+            0%,
+            10% {
+                transform: rotate(0deg);
+            }
+
+            60%,
+            100% {
+                transform: rotate(-1turn);
+            }
         }
     }
+
 
     .review-list {
         .left {
@@ -357,7 +445,7 @@ export default {
                     width: 250px;
                     border: 1px solid $header-text;
                     // border-radius: 50%;
-                
+
                 }
             }
         }
@@ -372,16 +460,16 @@ export default {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s;
+    transition: opacity 0.5s;
 }
 
 .fade-enter,
 .fade-leave-to {
-  opacity: 0;
+    opacity: 0;
 }
 
 .hidden {
-  display: none;
+    display: none;
 }
 
 @media screen and (min-width: 768px) {
