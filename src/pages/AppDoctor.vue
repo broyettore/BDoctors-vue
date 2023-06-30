@@ -88,6 +88,7 @@ export default {
                 user: this.msgForm.user,
                 email: this.msgForm.email,
                 message: this.msgForm.message,
+                doctor_id: this.singleDoctor.id
             }
 
             axios.post("http://127.0.0.1:8000/api/doctor/contact", data)
