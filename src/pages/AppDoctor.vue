@@ -211,7 +211,7 @@ export default {
                     <ul>
                         <li v-for="n in stars.slice().reverse()" class="my-2">
                             ({{ getVotes(singleDoctor.votes, n) }}) <font-awesome-icon v-for="y in n"
-                                icon="fa-solid fa-star" />
+                                icon="fa-solid fa-star" class="ms-star" />
                             <hr>
                         </li>
                     </ul>
@@ -232,27 +232,28 @@ export default {
                         <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample1">
                             <div class="accordion-body">
                                 <form @submit.prevent="sendReview()">
+                                    <div class="mb-3"><span><em>(Campi obbligatori*)</em></span></div>
                                     <div class="mb-3">
-                                        <label for="first_name" class="form-label">Nome</label>
+                                        <label for="first_name" class="form-label">Nome*</label>
                                         <input type="text" class="form-control" id="first_name"
                                             v-model="reviewForm.first_name">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="last_name" class="form-label">Cognome</label>
+                                        <label for="last_name" class="form-label">Cognome*</label>
                                         <input type="text" class="form-control" id="last_name"
                                             v-model="reviewForm.last_name">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="email" class="form-label">Email</label>
+                                        <label for="email" class="form-label">Email*</label>
                                         <input type="email" class="form-control" id="email" v-model="reviewForm.email">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="description" class="form-label">Recensione</label>
+                                        <label for="description" class="form-label">Recensione*</label>
                                         <textarea class="form-control" id="description" rows="3"
                                             v-model="reviewForm.description"></textarea>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="vote" class="form-label">Valutazione</label>
+                                        <label for="vote" class="form-label">Valutazione*</label>
                                         <select class="form-select" aria-label="Default select example" id="vote"
                                             v-model="reviewForm.vote">
                                             <option value="0" selected>Scegli una valutazione</option>
@@ -288,16 +289,17 @@ export default {
                         <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample2">
                             <div class="accordion-body">
                                 <form @submit.prevent="sendMsg">
+                                    <div class="mb-3"><span><em>(Campi obbligatori*)</em></span></div>
                                     <div class="mb-3">
-                                        <label for="user" class="form-label">Nome e Cognome</label>
+                                        <label for="user" class="form-label">Nome e Cognome*</label>
                                         <input type="text" class="form-control" id="user" v-model="msgForm.user">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="email" class="form-label">Email</label>
+                                        <label for="email" class="form-label">Email*</label>
                                         <input type="email" class="form-control" id="email" v-model="msgForm.email">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="message" class="form-label">Messaggio</label>
+                                        <label for="message" class="form-label">Messaggio*</label>
                                         <textarea class="form-control" id="message" rows="3"
                                             v-model="msgForm.message"></textarea>
                                     </div>
@@ -416,6 +418,10 @@ export default {
 
         .right {
             max-height: 400px;
+
+            .ms-star {
+                color: $main-background;
+            }
         }
     }
 
